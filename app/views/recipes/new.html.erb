@@ -1,0 +1,18 @@
+<h1> Create new Recip </h1>
+
+<% if @recipe.errors.any?%>
+  <ul>
+    <% @recipe.errors.full_messages.each do |msg| %>
+      <li><%= msg%></li>
+    <%end%>
+  </ul>
+<%end%>
+
+
+<%= form_for @recipe do |f|%>
+<%= f.label :name%>
+<%= f.text_field :name%>
+<%= f.label :origin%>
+<%= f.text_field :origin%>
+<%= f.submit %>
+<%end%>
