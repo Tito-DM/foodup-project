@@ -1,0 +1,10 @@
+
+<p>name:<%= @recipe.name%></p>
+<p>origin:<%= @recipe.origin%></p>
+
+<h1> add ingredients</h1>
+
+<%= form_for (@recipe,url: articles_path) do |f|%>
+  <%= f.label :ingredient%>
+  <%= f.text_field :ingredient%>
+<%end%>

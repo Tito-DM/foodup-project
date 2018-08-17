@@ -15,11 +15,12 @@ class RecipesController < ApplicationController
   end
 
   def show
+    @recipe = Recipe.find(params[:id])
   end
 
    private
   def recip_params
-      params.require(:recipe).permit(:name, :food_origen, :ingredient, :step)
+      params.require(:recipe).permit(:name, :origin)
   end
 
 end

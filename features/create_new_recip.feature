@@ -19,4 +19,5 @@ Feature: Create a recipe
     And   I fill in 'Origin' with ''
     And   I press on 'create recipe'
     Then  I should see "Name can't be blank"
-  
+    Then  I should see "Origin can't be blank"
+
