@@ -15,10 +15,10 @@ module NavigationHelpers
 
     when /the create new recip page/
       '/recipes/new'
-    when /the recipe profile page/
-      'recipes/new'
-    when /the show page/
-      '/show'
+    when /the details page for 'Calulu'/
+        recipe_path(Recipe.where(name: 'calulu').ids)
+
+
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

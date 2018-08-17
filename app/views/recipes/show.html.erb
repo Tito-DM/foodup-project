@@ -4,7 +4,13 @@
 
 <h1> add ingredients</h1>
 
-<%= form_for (@recipe,url: articles_path) do |f|%>
-  <%= f.label :ingredient%>
-  <%= f.text_field :ingredient%>
+<%= form_tag({controller: "ingredients", action: "create"}, method: "post") do |f|%>
+  <%= hidden_field_tag(:recipe_id, @recipe.id) %>
+  <%= label_tag(:ingredient, "Ingredient") %>
+  <%= text_field_tag(:ingredient) %>
+  <%= label_tag(:qty, "Qty") %>
+  <%= text_field_tag(:qty) %>
+  <%= submit_tag("add ingredient") %>
 <%end%>
+
+

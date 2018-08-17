@@ -16,6 +16,10 @@ ActiveRecord::Schema.define(version: 2018_08_17_011336) do
   enable_extension "plpgsql"
 
   create_table "ingredients", force: :cascade do |t|
+    t.string "ingredient"
+    t.string "qty"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "recipes", force: :cascade do |t|
