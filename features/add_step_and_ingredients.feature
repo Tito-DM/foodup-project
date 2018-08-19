@@ -20,9 +20,8 @@ Feature: View recipe profile
     Then show me the page
     Then  I should see 'Ingredient was successfully add'
   # Scenario: Add step
-  #   Given I am on the recipe profile page
-  #   When  I press on 'add step'
-  #   Then  I should see 'step' 1
+  #   Given I am on the details page for 'Calulu'
+  #   When  I fill in 'step' with 'mix beens with rice'
+  #   And   I press on 'add step'
+  #   Then  show me the page
   #   Then  I should see 'step was successfully add'
-  #   And   the number of step on database shoul be 1
-
