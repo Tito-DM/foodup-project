@@ -11,17 +11,9 @@ Feature: View recipe profile
       | rancho       | Portugal  |
       | cachupa      | cape verde|
 
-
-  Scenario: Add ingredients
+  Scenario: Add step
     Given I am on the details page for 'Calulu'
-    When  I fill in 'Ingredient' with 'rice'
-    And   I fill in 'Qty' with '3kg'
-    And   I press on 'add ingredient'
-    Then show me the page
-    Then  I should see 'Ingredient was successfully add'
-  # Scenario: Add step
-  #   Given I am on the details page for 'Calulu'
-  #   When  I fill in 'step' with 'mix beens with rice'
-  #   And   I press on 'add step'
-  #   Then  show me the page
-  #   Then  I should see 'step was successfully add'
+    When  I fill in 'step' with 'add rice and bees'
+    And   I press on 'add step'
+    Then  show me the page
+    Then  I should see 'Step was successfully add'
