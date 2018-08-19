@@ -4,13 +4,7 @@
 
 <h1> add ingredients</h1>
 
-<% if @recipe.ingredient.errors.any?%>
-  <ul>
-    <% @recipe.errors.full_messages.each do |msg| %>
-      <li><%= msg%></li>
-    <%end%>
-  </ul>
-<%end%>
+
 
 <%= form_tag({controller: "ingredients", action: "create"}, method: "post") do |f|%>
   <%= hidden_field_tag(:recipe_id, @recipe.id) %>
@@ -20,6 +14,8 @@
   <%= text_field_tag(:qty) %>
   <%= submit_tag("add ingredient") %>
 <%end%>
+
+<h1> add Step</h1>
 
 <%= form_tag({controller: "steps", action: "create"}, method: "post") do |f|%>
   <%= hidden_field_tag(:recipe_id, @recipe.id) %>
