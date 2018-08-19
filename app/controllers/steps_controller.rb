@@ -1,7 +1,7 @@
 class StepsController < ApplicationController
 
   def create
-    byebug
+  
     @step = Step.new(step: params[:step])
     @step.save
     flash[:notice] = 'Step was successfully add'
