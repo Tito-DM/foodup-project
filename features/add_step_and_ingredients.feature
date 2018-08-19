@@ -19,7 +19,6 @@ Feature: View recipe profile
     And   I press on 'add ingredient'
     Then show me the page
     Then  I should see 'Ingredient was successfully add'
-    And   the number of 'ingredient' on database shoul be 1
   # Scenario: Add step
   #   Given I am on the recipe profile page
   #   When  I press on 'add step'

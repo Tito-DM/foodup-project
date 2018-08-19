@@ -19,12 +19,8 @@ When /^I press on (.*)$/ do |button|
   find('input[name="commit"]').click
 end
 
-When("the number of {string} on database shoul be {int}") do |string, int|
-  if string = 'recip'
-  expect(Recipe.count).to eq int
-  elsif string = 'ingredient'
-    expect(Ingredient.count).to eq int
-  end
+Then("the number of {string} on the database should be {int}") do |string, int|
+   expect(Recipe.count).to eq int if string = 'recip'
 end
 
 Then("I should see {string}") do |string|

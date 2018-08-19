@@ -10,7 +10,7 @@ Feature: Create a recipe
     And   I fill in 'Origin' with 'Angola'
     And   I press on 'create recipe'
     Then  I should see 'Recipe was successfully created'
-    Then  the number of recip on the database should be 1
+    Then  the number of "recip" on the database should be 1
 
 
   Scenario: validate input field
