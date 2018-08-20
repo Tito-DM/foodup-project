@@ -11,7 +11,7 @@ class RecipesController < ApplicationController
       flash[:notice] = 'Recipe was successfully created'
       redirect_to recipe_path(@recipe)
     else
-      render recipe_path(params[:recipe_id])
+      render 'new'
     end
   end
 

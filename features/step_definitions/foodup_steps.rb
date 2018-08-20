@@ -16,11 +16,19 @@ When("I fill in {string} with {string}") do |string, string2|
 end
 
 When /^I press on (.*)$/ do |button|
+
+  # if button = "create recipe"
+  # find('input[value= "Create Recipe"]').click
+  # end
+
+  # if button = 'add step'
+  # find('input[value= "add step"]').click
+  # end
+
   if button = 'add ingredient'
-    find('input[value= "add ingredient"]').click
-  elsif button = 'add step'
-    find('input[value= "add step"]').click
+  find('input[value= "add ingredient"]').click
   end
+
 end
 
 Then("the number of {string} on the database should be {int}") do |string, int|

@@ -8,16 +8,18 @@ Feature: Create a recipe
     Given I am on the create new recip page
     When  I fill in 'Name' with 'Arroz com feijao'
     And   I fill in 'Origin' with 'Angola'
-    And   I press on 'create recipe'
+    And   I press on create recipe
     Then  I should see 'Recipe was successfully created'
     Then  the number of "recip" on the database should be 1
 
-
-  Scenario: validate input field
+  Scenario: validate recipe
     Given I am on the create new recip page
     When  I fill in 'Name' with ''
     And   I fill in 'Origin' with ''
-    And   I press on 'create recipe'
+    And   I press on create recipe
     Then  I should see "Name can't be blank"
-    Then  I should see "Origin can't be blank"
+    And  I should see "Origin can't be blank"
+
+
+
 
