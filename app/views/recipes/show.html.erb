@@ -24,4 +24,36 @@
   <%= submit_tag("add step") %>
 <%end%>
 
+<h1> list of ingredient</h1>
+
+  <table>
+    <tr>
+      <th>Ingredient</th>
+      <th>Qty</th>
+      <th>create at</th>
+    </tr>
+    <% @recipe.ingredient.each do |ingredients| -%>
+      <tr>
+        <td><%= ingredients.ingredient%></td>
+        <td><%= ingredients.qty%></td>
+        <td><%= ingredients.created_at%></td>
+      </tr>
+    <% end -%>
+
+  </table>
+
+
+<h1> list of Steps</h1>
+
+  <table>
+    <%@recipe.steps.each do |step| -%>
+     <tr>
+        <td><%= step.step%></td>
+      </tr>
+    <%end-%>
+  </table>
+
+
+
+
 

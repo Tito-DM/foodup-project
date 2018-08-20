@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
   end
 
   def create
-
+    @couter_display = 0
     @recipe =  Recipe.new(recip_params)
     if @recipe.save
       flash[:notice] = 'Recipe was successfully created'

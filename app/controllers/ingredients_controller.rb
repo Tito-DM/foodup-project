@@ -21,6 +21,7 @@ class IngredientsController < ApplicationController
     @ingredient = Ingredient.find(params[:id])
   end
 
+  private
   def errors_message
     @ingredient.errors.full_messages.each do |msg|
       message = msg
