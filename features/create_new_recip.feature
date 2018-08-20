@@ -8,6 +8,7 @@ Feature: Create a recipe
     Given I am on the create new recip page
     When  I fill in 'Name' with 'Arroz com feijao'
     And   I fill in 'Origin' with 'Angola'
+    And   I fill in 'Description' with 'is the most popular food'
     And   I press on create recipe
     Then  I should see 'Recipe was successfully created'
     Then  the number of "recip" on the database should be 1
