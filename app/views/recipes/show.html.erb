@@ -6,8 +6,7 @@
 
 
 
-<%= form_tag({controller: "ingredients", action: "create"}, method: "post") do |f|%>
-  <%= hidden_field_tag(:recipe_id, @recipe.id) %>
+<%= form_tag(recipe_ingredients_path(@recipe.id),method: :post) do |f|%>
   <%= label_tag(:ingredient, "Ingredient") %>
   <%= text_field_tag(:ingredient) %>
   <%= label_tag(:qty, "Qty") %>
@@ -37,6 +36,9 @@
         <td><%= ingredients.ingredient%></td>
         <td><%= ingredients.qty%></td>
         <td><%= ingredients.created_at%></td>
+        <td><%= link_to 'delete', recipe_ingredient_path(@recipe.id,ingredients.id),method: :delete, data: {confirm: "are you sure?"} %></td>
+        <td><%= link_to 'edit', edit_recipe_ingredient_path(@recipe.id,ingredients.id) %></td>
+
       </tr>
     <% end -%>
 
