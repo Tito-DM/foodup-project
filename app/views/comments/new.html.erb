@@ -1,0 +1,7 @@
+<h1> Create commmet </h1>
+
+<%= form_tag(recipe_comments_path(@recipe.id),method: :post) do |f|%>
+  <%= label_tag(:comment, "comment") %>
+  <%= text_field_tag(:comment) %>
+  <%= submit_tag("add comment") %>
+<%end%>

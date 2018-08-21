@@ -1,0 +1,30 @@
+<h1> List of recipe</h1>
+
+ <table>
+    <tr>
+      <th>Name</th>
+      <th>Origin</th>
+      <th>Description</th>
+      <th>Comment</th>
+      <th>Date created</th>
+    </tr>
+    <% @recipe.each do |recipe | -%>
+      <tr>
+        <td><%= recipe.name%></td>
+        <td><%= recipe.origin%></td>
+        <td><%= recipe.description%></td>
+        <td>
+        <% recipe.comment.each do |c|%>
+            <%= c.comment%>
+        <%end%>
+        </td>
+        <td><%= recipe.created_at%></td>
+
+        <td><%= link_to 'view',recipe_path(recipe.id)%></td>
+        <td><%= link_to 'comment', new_recipe_comment_path(recipe.id)%></td>
+
+      </tr>
+    <% end -%>
+
+  </table>
+

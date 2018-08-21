@@ -12,11 +12,12 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
-
     when /the create new recip page/
-      '/recipes/new'
+      new_recipe_path
     when /the details page for 'Calulu'/
-        recipe_path(Recipe.where(name: 'calulu').ids)
+      recipe_path(Recipe.where(name: 'calulu').ids)
+    when /index page/
+      recipes_path
 
 
 

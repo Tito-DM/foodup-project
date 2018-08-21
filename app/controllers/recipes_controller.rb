@@ -1,7 +1,10 @@
 class RecipesController < ApplicationController
 
-  def new
+  def index
+    @recipe = Recipe.all
+  end
 
+  def new
     @recipe = Recipe.new
   end
 
@@ -19,10 +22,9 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
-
    private
   def recip_params
-    params.require(:recipe).permit(:name, :origin)
+    params.require(:recipe).permit(:name, :origin, :description)
   end
 
 end

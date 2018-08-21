@@ -11,12 +11,19 @@ Given /^(?:|I )am on (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
+Then("It should navigate to {string}") do |page_name|
+ visit path_to(page_name)
+end
+
+
 When("I fill in {string} with {string}") do |string, string2|
   fill_in string,	with: string2
 end
 
-When("I follow {string}") do |link|
- find("#delete-ingredient").click
+Given("I  click {string}") do |link|
+  within('td') do
+    click_link 'comment'
+  end
 end
 
 When /^I press on (.*)$/ do |button|
@@ -24,6 +31,9 @@ When /^I press on (.*)$/ do |button|
   # if button = "create recipe"
   # find('input[value= "Create Recipe"]').click
   # end
+  if button = 'comment'
+  find('input[id= "comment"]').click
+  end
 
   if button = 'add step'
   find('input[value= "add step"]').click
