@@ -1,4 +1,4 @@
-<h1> Create new Recip </h1>
+<h1 class = 'center'> Create new Recip </h1>
 
 <% if @recipe.errors.any?%>
   <ul>
@@ -8,6 +8,7 @@
   </ul>
 <%end%>
 
+<div class= 'container'>
 
 <%= form_for @recipe do |f|%>
 <%= f.label :name%>
@@ -16,5 +17,7 @@
 <%= f.text_field :origin%>
 <%= f.label :description%>
 <%= f.text_area :description%>
-<%= f.submit %>
+<%= f.submit :class => "btn green" %>
 <%end%>
+
+</div>

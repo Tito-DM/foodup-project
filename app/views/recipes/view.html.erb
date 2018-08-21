@@ -1,26 +1,7 @@
-
 <p>name:<%= @recipe.name%></p>
 <p>origin:<%= @recipe.origin%></p>
 <p>description:<%= @recipe.description%></p>
 
-<h5 class='center'> add ingredients</h5>
-<div class='container'>
-<%= form_tag(recipe_ingredients_path(@recipe.id),method: :post) do |f|%>
-  <%= label_tag(:ingredient, "Ingredient") %>
-  <%= text_field_tag(:ingredient) %>
-  <%= label_tag(:qty, "Qty") %>
-  <%= text_field_tag(:qty) %>
-  <%= submit_tag("add ingredient") %>
-<%end%>
-
-
-<h5 class = 'center'> add Step</h5>
-
-<%= form_tag(recipe_steps_path(@recipe.id),method: :post) do |f|%>
-  <%= label_tag(:step, "step") %>
-  <%= text_field_tag(:step) %>
-  <%= submit_tag("add step") %>
-<%end%>
 
 <h5 class ='center'> list of ingredient</h5>
 
@@ -55,12 +36,3 @@
       </tr>
     <%end-%>
   </table>
-
-  </div>
-
-
-
-
-
-
-
