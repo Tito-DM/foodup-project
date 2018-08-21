@@ -1,9 +1,5 @@
 class IngredientsController < ApplicationController
 
-  def new
-    @recipe =  Recipe.new
-    @ingredient = @recipe.ingredient.build
-  end
 
   def create
     @recipe =  Recipe.find(params[:recipe_id])
@@ -18,7 +14,7 @@ class IngredientsController < ApplicationController
     end
   end
 
-   def show
+  def show
     @recipe =  Recipe.find(recip_params)
     @ingredient = @recipe.ingredient.find(params[:id])
   end
@@ -31,9 +27,10 @@ class IngredientsController < ApplicationController
   def update
     @recipe =  Recipe.find(params[:recipe_id])
     @ingredient = @recipe.ingredient.find(params[:id])
-    @ingredient.update_attributes(ingredient: params[:ingredient], qty: params[:qty])
+    if @ingredient.update_attributes(ingredient: params[:ingredient], qty: params[:qty])
     flash[:notice] = 'Ingredient was successfully deleted'
     redirect_to recipe_path( @ingredient.recipe.id)
+    end
 
   end
 

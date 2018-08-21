@@ -17,7 +17,7 @@ Feature: Edit and delete a steps and ingredients
     And   I press on add ingredient
     And   I follow 'delete'
     Then  show me the page
-    Then  I should see 'Ingredient was successfully deleted'
+    Then  I should not  see 'Ingredient was successfully deleted'
 
   Scenario: delete a edit
     Given I am on the details page for 'Calulu'

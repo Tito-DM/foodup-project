@@ -16,8 +16,7 @@
 
 <h1> add Step</h1>
 
-<%= form_tag({controller: "steps", action: "create"}, method: "post") do |f|%>
-  <%= hidden_field_tag(:recipe_id, @recipe.id) %>
+<%= form_tag(recipe_steps_path(@recipe.id),method: :post) do |f|%>
   <%= label_tag(:step, "step") %>
   <%= text_field_tag(:step) %>
   <%= submit_tag("add step") %>
@@ -51,6 +50,8 @@
     <%@recipe.steps.each do |step| -%>
      <tr>
         <td><%= step.step%></td>
+        <td><%= link_to 'delete', recipe_step_path(@recipe.id,step.id),method: :delete, data: {confirm: "are you sure?"} %></td>
+        <td><%= link_to 'edit', edit_recipe_step_path(@recipe.id,step.id) %></td>
       </tr>
     <%end-%>
   </table>

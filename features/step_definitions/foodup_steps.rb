@@ -25,9 +25,9 @@ When /^I press on (.*)$/ do |button|
   # find('input[value= "Create Recipe"]').click
   # end
 
-  # if button = 'add step'
-  # find('input[value= "add step"]').click
-  # end
+  if button = 'add step'
+  find('input[value= "add step"]').click
+  end
 
   # if button = 'add ingredient'
   # find('input[value= "add ingredient"]').click

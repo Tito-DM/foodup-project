@@ -1,11 +1,8 @@
-<h1> edit article</h1>
-
-
-
+<h1> edit ingredient</h1>
 <%= form_tag(recipe_ingredient_path(@recipe.id,@ingredient), method: :put) do |f|%>
   <%= label_tag(:ingredient, "Ingredient") %>
   <%= text_field_tag(:ingredient) %>
   <%= label_tag(:qty, "Qty") %>
   <%= text_field_tag(:qty) %>
-  <%= submit_tag("ingredient") %>
+  <%= submit_tag("update ingredient") %>
 <%end%>
