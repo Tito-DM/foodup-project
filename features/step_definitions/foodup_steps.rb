@@ -21,9 +21,7 @@ When("I fill in {string} with {string}") do |string, string2|
 end
 
 Given("I  click {string}") do |link|
-  within('td') do
     click_link 'comment'
-  end
 end
 
 When /^I press on (.*)$/ do |button|
@@ -31,13 +29,16 @@ When /^I press on (.*)$/ do |button|
   # if button = "create recipe"
   # find('input[value= "Create Recipe"]').click
   # end
-  if button = 'comment'
-  find('input[id= "comment"]').click
+  # if button = 'comment'
+  # find('input[id= "comment"]').click
+  # end
+  if button = 'add comment'
+    find('input[value= "add comment"]').click
   end
 
-  if button = 'add step'
-  find('input[value= "add step"]').click
-  end
+  # if button = 'add step'
+  # find('input[value= "add step"]').click
+  # end
 
   # if button = 'add ingredient'
   # find('input[value= "add ingredient"]').click
@@ -55,4 +56,8 @@ end
 
 Then("show me the page") do
   save_and_open_page
+end
+
+Then("It should redirect me to {string}") do |comment_page|
+   visit path_to(comment_page)
 end

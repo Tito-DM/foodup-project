@@ -1,32 +1,30 @@
 <h1 class='center'> List of recipe</h1>
-<div class = 'container'>
- <table class="responsive-table striped">
-    <tr>
-      <th>Name</th>
-      <th>Origin</th>
-      <th class ="center">Description</th>
-      <th>Comments</th>
-      <th>Date created</th>
-      <th></th>
-      <th></th>
-    </tr>
-    <% @recipe.each do |recipe | -%>
-      <tr>
-        <td><%= recipe.name%></td>
-        <td><%= recipe.origin%></td>
-        <td><%= recipe.description%></td>
-        <td>
-        <% recipe.comment.each do |c|%>
+<div class = 'container '>
+  <% @recipe.each do |recipe | -%>
+    <div class="row">
+      <div class="col s12 m7 ">
+        <div class="card medium">
+          <div class="card-image">
+            <%= image_tag("food.jpg", :alt => "rss feed") %>
+            <span class="card-title"><%= recipe.name%></span>
+          </div>
+          <div class="card-content">
+            Origin: <%= recipe.origin%>
+            <p><%= recipe.description%></p>
+            <p>comment:</p>
+            <% recipe.comment.each do |c|%>
             <%= c.comment%><br/>
-        <%end%>
-        </td>
-        <td><%= recipe.created_at%></td>
+            <%end%>
+          </div>
+          <div class="card-action">
+            <%= link_to 'view', view_recipe_path(recipe.id), method: :get%>
+            <%= link_to 'comment', new_recipe_comment_path(recipe.id)%>
+            <%= recipe.created_at%>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end -%>
 
-        <td><%= link_to 'view', view_recipe_path(recipe.id), method: :get%></td>
-        <td><%= link_to 'comment', new_recipe_comment_path(recipe.id)%></td>
-
-      </tr>
-    <% end -%>
-  </table>
-  </div>
+</div>
 
