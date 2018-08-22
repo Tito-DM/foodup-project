@@ -16,9 +16,6 @@
         <td><%= ingredients.ingredient%></td>
         <td><%= ingredients.qty%></td>
         <td><%= ingredients.created_at%></td>
-        <td><%= link_to 'delete', recipe_ingredient_path(@recipe.id,ingredients.id),method: :delete, data: {confirm: "are you sure?"} %></td>
-        <td><%= link_to 'edit', edit_recipe_ingredient_path(@recipe.id,ingredients.id) %></td>
-
       </tr>
     <% end -%>
 
@@ -31,8 +28,6 @@
     <%@recipe.steps.each do |step| -%>
      <tr>
         <td><%= step.step%></td>
-        <td><%= link_to 'delete', recipe_step_path(@recipe.id,step.id),method: :delete, data: {confirm: "are you sure?"} %></td>
-        <td><%= link_to 'edit', edit_recipe_step_path(@recipe.id,step.id) %></td>
       </tr>
     <%end-%>
   </table>

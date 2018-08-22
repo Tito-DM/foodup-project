@@ -18,7 +18,7 @@ Feature: View recipe profile
     When  I fill in 'Ingredient' with 'rice'
     And   I fill in 'Qty' with '3kg'
     And   I press on add ingredient
-    Then show me the page
+    Then  show me the page
     Then  I should see 'Ingredient was successfully add'
     And   I should see 'rice'
     And   I should see '3kg'

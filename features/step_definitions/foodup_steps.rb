@@ -26,23 +26,25 @@ end
 
 When /^I press on (.*)$/ do |button|
 
-  # if button = "create recipe"
-  # find('input[value= "Create Recipe"]').click
-  # end
-  # if button = 'comment'
-  # find('input[id= "comment"]').click
-  # end
+  if button = "create recipe"
+  find('input[value= "Create Recipe"]').click
+  end
+
+  if button = 'comment'
+  find('input[id= "comment"]').click
+  end
+
   if button = 'add comment'
     find('input[value= "add comment"]').click
   end
 
-  # if button = 'add step'
-  # find('input[value= "add step"]').click
-  # end
+  if button = 'add step'
+  find('input[value= "add step"]').click
+  end
 
-  # if button = 'add ingredient'
-  # find('input[value= "add ingredient"]').click
-  # end
+  if button = 'add ingredient'
+  find('input[value= "add ingredient"]').click
+  end
 
 end
 

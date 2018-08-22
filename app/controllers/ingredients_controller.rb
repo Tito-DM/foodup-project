@@ -5,7 +5,6 @@ class IngredientsController < ApplicationController
     @recipe =  Recipe.find(params[:recipe_id])
     @ingredient = @recipe.ingredient.create(ingredient: params[:ingredient], qty: params[:qty])
     if @ingredient.save
-
       flash[:notice] = 'Ingredient was successfully add'
       redirect_to recipe_path(params[:recipe_id]) and return
     else
