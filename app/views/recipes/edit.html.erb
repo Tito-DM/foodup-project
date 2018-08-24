@@ -1,0 +1,23 @@
+<h1 class = 'center'> edit Recip </h1>
+
+<% if @recipe.errors.any?%>
+  <ul>
+    <% @recipe.errors.full_messages.each do |msg| %>
+      <li><%= msg%></li>
+    <%end%>
+  </ul>
+<%end%>
+
+<div class= 'container'>
+
+<%= form_for @recipe do |f|%>
+<%= f.label :name%>
+<%= f.text_field :name%>
+<%= f.label :origin%>
+<%= f.text_field :origin%>
+<%= f.label :description%>
+<%= f.text_area :description%>
+<%= f.submit :class => "btn green" %>
+<%end%>
+
+</div>

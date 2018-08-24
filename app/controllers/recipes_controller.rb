@@ -18,6 +18,10 @@ class RecipesController < ApplicationController
     end
   end
 
+  def edit
+     @recipe = Recipe.find(params[:id])
+  end
+
   def show
     @recipe = Recipe.find(params[:id])
   end
@@ -30,6 +34,11 @@ class RecipesController < ApplicationController
 
   def view
     @recipe = Recipe.find(params[:id])
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    redirect_to recipe_path if @recipe.update(recip_params)
   end
 
    private
