@@ -7,6 +7,14 @@ Given("the following recipe exist:") do |recipe_table|
 end
 
 
+Given("the following ingredients exist:") do |ingredient_table|
+  ingredient_table.hashes.each do |ingredient|
+    recipe = Recipe.find(ingredient[:id])
+    recipe.ingredient.create!(ingredient)
+  end
+end
+
+
 Given /^(?:|I )am on (.+)$/ do |page_name|
   visit path_to(page_name)
 end
