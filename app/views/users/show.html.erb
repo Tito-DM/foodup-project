@@ -1,0 +1,29 @@
+<h1> User Profile </h1>
+
+
+
+<%= link_to 'create a recipe', new_user_recipe_path(@user.id) %>
+
+<h1>List of recipe</h1>
+
+ <table class="responsive-table">
+    <tr>
+      <th>Name</th>
+      <th>Origin</th>
+      <th>create at</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <%@user.recipe.each do |recipe| -%>
+     <tr>
+        <td><%= recipe.name%></td>
+        <td><%= recipe.origin%></td>
+        <td><%= recipe.created_at%></td>
+        <td><%= link_to 'view' ,user_recipe_path(@user.id,recipe.id)%></td>
+        <td> <%= link_to 'delete recipe' ,user_recipe_path(@user.id,recipe.id),method: :delete, data: {confirm: "are you sure?"}  %></td>
+        <td><%= link_to 'edit recipe' ,edit_user_recipe_path(@user.id,recipe.id)%></td>
+      </tr>
+    <%end-%>
+  </table>
+
+

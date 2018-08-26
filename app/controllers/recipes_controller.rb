@@ -5,31 +5,36 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @recipe = Recipe.new
+    @user = User.find(params[:user_id])
+    @recipe = @user.recipe.build
   end
 
   def create
-    @recipe =  Recipe.new(recip_params)
+    @user = User.find(params[:user_id])
+    @recipe = @user.recipe.create(recip_params)
     if @recipe.save
       flash[:notice] = 'Recipe was successfully created'
-      redirect_to recipe_path(@recipe)
+      redirect_to user_recipe_path(@user.id, @recipe)
     else
       render 'new'
     end
   end
 
   def edit
-     @recipe = Recipe.find(params[:id])
+    @user = User.find(params[:user_id])
+    @recipe = @user.recipe.find(params[:id])
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
+    @user = User.find(params[:user_id])
+    @recipe = @user.recipe.find(params[:id])
   end
 
   def destroy
-    @recipe = Recipe.find(params[:id])
+    @user = User.find(params[:user_id])
+    @recipe =  @user.recipe.find(params[:id])
     @recipe.destroy
-    redirect_to recipes_path
+    redirect_to user_path(@user.id)
   end
 
   def view
@@ -37,8 +42,9 @@ class RecipesController < ApplicationController
   end
 
   def update
-    @recipe = Recipe.find(params[:id])
-    redirect_to recipe_path if @recipe.update(recip_params)
+    @user = User.find(params[:user_id])
+    @recipe = @user.recipe.find(params[:id])
+    redirect_to user_path(@user.id) if @recipe.update(recip_params)
   end
 
    private

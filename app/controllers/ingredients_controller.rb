@@ -2,43 +2,43 @@ class IngredientsController < ApplicationController
 
 
   def create
+    @user =  User.find(params[:user_id])
     @recipe =  Recipe.find(params[:recipe_id])
     @ingredient = @recipe.ingredient.create(ingredient: params[:ingredient], qty: params[:qty])
     if @ingredient.save
       flash[:notice] = 'Ingredient was successfully add'
-      redirect_to recipe_path(params[:recipe_id]) and return
+      redirect_to user_recipe_path(params[:user_id],params[:recipe_id]) and return
     else
       flash[:notice] = errors_message.to_s.gsub!(/[\[\"\]]/, "")
-      redirect_to recipe_path(params[:recipe_id]) and return
+      redirect_to user_recipe_path(params[:user_id],params[:recipe_id]) and return
     end
   end
 
-  def show
-    @recipe =  Recipe.find(recip_params)
-    @ingredient = @recipe.ingredient.find(params[:id])
-  end
 
   def edit
-    @recipe =  Recipe.find(params[:recipe_id])
+    @user = User.find(params[:user_id])
+    @recipe =  @user.recipe.find(params[:recipe_id])
     @ingredient = @recipe.ingredient.find(params[:id])
   end
 
   def update
-    @recipe =  Recipe.find(params[:recipe_id])
+    @user = User.find(params[:user_id])
+    @recipe =  @user.recipe.find(params[:recipe_id])
     @ingredient = @recipe.ingredient.find(params[:id])
-    if @ingredient.update_attributes(ingredient: params[:ingredient], qty: params[:qty])
+    if @ingredient.update(ingredient_params)
     flash[:notice] = 'Ingredient was successfully deleted'
-    redirect_to recipe_path( @ingredient.recipe.id)
+    redirect_to user_recipe_path(@user.id, @recipe.id)
     end
 
   end
 
   def destroy
-    @recipe =  Recipe.find(params[:recipe_id])
+    @user = User.find(params[:user_id])
+    @recipe = @user.recipe.find(params[:recipe_id])
     @ingredient = @recipe.ingredient.find(params[:id])
     if @ingredient.destroy
     flash[:notice] = 'Ingredient was successfully deleted'
-    redirect_to recipe_path( @ingredient.recipe.id)
+    redirect_to user_recipe_path(@user.id, @recipe.id)
     end
   end
 

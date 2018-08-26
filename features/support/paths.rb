@@ -13,7 +13,7 @@ module NavigationHelpers
     when /the home\s?page/
         recipes_path
     when /the create new recip page/
-      new_recipe_path
+       new_user_recipe(Recipe.find_by(name: 'calulu').user_id)
     when /the details page for 'Calulu'/
       recipe_path(Recipe.where(name: 'calulu').ids)
     when /comment page/

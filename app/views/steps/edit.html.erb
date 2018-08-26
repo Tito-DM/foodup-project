@@ -1,6 +1,7 @@
 <h1> edit Step</h1>
-<%= form_tag(recipe_step_path(@recipe.id,@step), method: :put) do |f|%>
-  <%= label_tag(:step, "step") %>
-  <%= text_field_tag(:step) %>
-  <%= submit_tag("update step") %>
+
+<%= form_for(@step, url:user_recipe_step_path(@user.id,@recipe.id,@step), html: {method: "put"}) do |f|%>
+<%= f.label :step%>
+<%= f.text_field :step%>
+<%= f.submit :class => "btn green" %>
 <%end%>

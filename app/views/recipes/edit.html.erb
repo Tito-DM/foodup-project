@@ -9,8 +9,7 @@
 <%end%>
 
 <div class= 'container'>
-
-<%= form_for @recipe do |f|%>
+<%= form_for(@recipe, url: user_recipe_path(@user.id), html: {method: "put"}) do |f|%>
 <%= f.label :name%>
 <%= f.text_field :name%>
 <%= f.label :origin%>

@@ -1,44 +1,44 @@
 class StepsController < ApplicationController
 
   def create
+    @user =  User.find(params[:user_id])
     @recipe = Recipe.find(params[:recipe_id])
     @step =  @recipe.steps.new(step: params[:step])
 
     if @step.save
       flash[:notice] = 'Step was successfully add'
-      redirect_to recipe_path(params[:recipe_id]) and return
+      redirect_to user_recipe_path(params[:user_id],params[:recipe_id]) and return
     else
       flash[:notice] = errors_message.to_s.gsub!(/[\[\"\]]/, "")
-      redirect_to recipe_path(params[:recipe_id]) and return
+      redirect_to user_recipe_path(params[:user_id],params[:recipe_id]) and return
     end
   end
 
-  def show
-    @recipe =  Recipe.find(recip_params)
-    @step   = @recipe.steps.find(params[:id])
-  end
-
   def edit
-    @recipe = Recipe.find(params[:recipe_id])
+    @user = User.find(params[:user_id])
+    @recipe = @user.recipe.find(params[:recipe_id])
     @step   = @recipe.steps.find(params[:id])
   end
 
   def update
-    @recipe =  Recipe.find(params[:recipe_id])
+    @user = User.find(params[:user_id])
+    @recipe = @user.recipe.find(params[:recipe_id])
     @step  = @recipe.steps.find(params[:id])
-    if @step.update_attributes(step: params[:step])
+    if @step.update(step_params)
     flash[:notice] = 'step was successfully deleted'
-    redirect_to recipe_path(@step.recipe.id)
+    redirect_to user_recipe_path(@user.id, @recipe.id)
     end
 
   end
 
   def destroy
-    @recipe =  Recipe.find(params[:recipe_id])
+
+    @user = User.find(params[:user_id])
+    @recipe =  @user.recipe.find(params[:recipe_id])
     @step = @recipe.steps.find(params[:id])
     if @step.destroy
     flash[:notice] = 'step was successfully deleted'
-    redirect_to recipe_path(@step.recipe.id)
+    redirect_to user_recipe_path(@user.id, @recipe.id)
     end
   end
 
@@ -47,6 +47,10 @@ class StepsController < ApplicationController
     @step.errors.full_messages.each do |msg|
       message = msg
     end
+  end
+
+  def step_params
+    params.require(:step).permit(:step)
   end
 
 end
