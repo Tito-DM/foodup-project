@@ -6,12 +6,12 @@ class RecipesController < ApplicationController
 
   def new
     @user = User.find(params[:user_id])
-    @recipe = @user.recipe.build
+    @recipe = @user.recipes.build
   end
 
   def create
     @user = User.find(params[:user_id])
-    @recipe = @user.recipe.create(recip_params)
+    @recipe = @user.recipes.create(recip_params)
     if @recipe.save
       flash[:notice] = 'Recipe was successfully created'
       redirect_to user_recipe_path(@user.id, @recipe)
@@ -22,17 +22,17 @@ class RecipesController < ApplicationController
 
   def edit
     @user = User.find(params[:user_id])
-    @recipe = @user.recipe.find(params[:id])
+    @recipe = @user.recipes.find(params[:id])
   end
 
   def show
     @user = User.find(params[:user_id])
-    @recipe = @user.recipe.find(params[:id])
+    @recipe = @user.recipes.find(params[:id])
   end
 
   def destroy
     @user = User.find(params[:user_id])
-    @recipe =  @user.recipe.find(params[:id])
+    @recipe =  @user.recipes.find(params[:id])
     @recipe.destroy
     redirect_to user_path(@user.id)
   end
@@ -43,7 +43,7 @@ class RecipesController < ApplicationController
 
   def update
     @user = User.find(params[:user_id])
-    @recipe = @user.recipe.find(params[:id])
+    @recipe = @user.recipes.find(params[:id])
     redirect_to user_path(@user.id) if @recipe.update(recip_params)
   end
 

@@ -13,8 +13,8 @@ module NavigationHelpers
     when /the home\s?page/
       recipes_path
 
-    when /create new user page\s?page/
-
+    when /edit recipe\s?page/
+       edit_user_recipe_path(1,1)
     when /the create new recip page/
      new_user_recipe_path(User.ids)
     when /the create new user page/

@@ -4,25 +4,26 @@ Feature: Delete Recipe
   I would like to delete and edit my recipe
 
   Background: recipe in database
+    Given the following user exists:
+      | name | email             | password | phone    |
+      | Marc | angola@center.com | foo      | 03421342 |
 
-    Given the following recipe exist:
-      | name    | origin     | description              |
-      | calulu  | Angola     | tipico de angola         |
-      | rancho  | Portugal   | popular food in portugal |
-      | cachupa | cape verde | testy                    |
+    Given 'angola@center.com' has the following recipe exist:
+      | name   | origin     | description      |
+      | calulu | Angola     | tipico de angola |
+    And I visit the 'angola@center.com' show page
 
 
   Scenario: delete a recipe
-    Given I am on the details page for 'Calulu'
-    And   I  click 'delete recipe'
-    Then  The number of recipe should be igual 2
+    Given I click on 'delete recipe'
+    Then  The number of "recipe-del" should be igual 0
+
 
   Scenario: edit a recipe
-    Given I am on the details page for 'Calulu'
-    When  I  click 'edit recipe'
-    And   I fill in 'name' with 'calulu edited'
-    And   I fill in 'origin' with 'Brazil'
-    Then  It should redirect me to the details page for 'Calulu'
+    Given I click on 'edit recipe'
+    And   I fill in 'Name' with 'calulu edited'
+    And   I fill in 'Origin' with 'Brazil'
+    And   I click on 'Update Recipe'
     And   I should see 'calulu edited'
     And   I should see 'Brazil'
 

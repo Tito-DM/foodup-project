@@ -17,16 +17,16 @@ class IngredientsController < ApplicationController
 
   def edit
     @user = User.find(params[:user_id])
-    @recipe =  @user.recipe.find(params[:recipe_id])
+    @recipe =  @user.recipes.find(params[:recipe_id])
     @ingredient = @recipe.ingredient.find(params[:id])
   end
 
   def update
     @user = User.find(params[:user_id])
-    @recipe =  @user.recipe.find(params[:recipe_id])
+    @recipe =  @user.recipes.find(params[:recipe_id])
     @ingredient = @recipe.ingredient.find(params[:id])
     if @ingredient.update(ingredient_params)
-    flash[:notice] = 'Ingredient was successfully deleted'
+    flash[:notice] = 'Ingredient was successfully edited'
     redirect_to user_recipe_path(@user.id, @recipe.id)
     end
 
@@ -34,7 +34,7 @@ class IngredientsController < ApplicationController
 
   def destroy
     @user = User.find(params[:user_id])
-    @recipe = @user.recipe.find(params[:recipe_id])
+    @recipe = @user.recipes.find(params[:recipe_id])
     @ingredient = @recipe.ingredient.find(params[:id])
     if @ingredient.destroy
     flash[:notice] = 'Ingredient was successfully deleted'

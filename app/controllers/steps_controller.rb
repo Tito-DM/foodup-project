@@ -16,16 +16,16 @@ class StepsController < ApplicationController
 
   def edit
     @user = User.find(params[:user_id])
-    @recipe = @user.recipe.find(params[:recipe_id])
+    @recipe = @user.recipes.find(params[:recipe_id])
     @step   = @recipe.steps.find(params[:id])
   end
 
   def update
     @user = User.find(params[:user_id])
-    @recipe = @user.recipe.find(params[:recipe_id])
+    @recipe = @user.recipes.find(params[:recipe_id])
     @step  = @recipe.steps.find(params[:id])
     if @step.update(step_params)
-    flash[:notice] = 'step was successfully deleted'
+    flash[:notice] = 'step was successfully edited'
     redirect_to user_recipe_path(@user.id, @recipe.id)
     end
 
@@ -34,7 +34,7 @@ class StepsController < ApplicationController
   def destroy
 
     @user = User.find(params[:user_id])
-    @recipe =  @user.recipe.find(params[:recipe_id])
+    @recipe =  @user.recipes.find(params[:recipe_id])
     @step = @recipe.steps.find(params[:id])
     if @step.destroy
     flash[:notice] = 'step was successfully deleted'
