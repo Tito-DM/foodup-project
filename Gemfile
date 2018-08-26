@@ -55,7 +55,7 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'launchy'
