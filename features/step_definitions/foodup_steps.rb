@@ -72,3 +72,18 @@ end
 Then("It should redirect me to {string}") do |comment_page|
    visit path_to(comment_page)
 end
+
+Given("the following user exists:") do |table|
+  table.hashes.each do |user|
+    FactoryBot.create(:user, user)
+  end
+end
+
+When("I visit the {string} show page") do |email|
+  user = User.find_by_email(email)
+  visit user_path(user)
+end
+
+When("I click on {string}") do |text|
+  click_link_or_button text
+end

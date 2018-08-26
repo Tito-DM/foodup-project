@@ -16,7 +16,7 @@ module NavigationHelpers
     when /create new user page\s?page/
 
     when /the create new recip page/
-     new_user_recipe(User.ids)
+     new_user_recipe_path(User.ids)
     when /the create new user page/
       new_user_path
     when /the details page for 'Calulu'/
