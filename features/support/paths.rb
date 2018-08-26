@@ -11,9 +11,14 @@ module NavigationHelpers
     case page_name
 
     when /the home\s?page/
-        recipes_path
+      recipes_path
+
+    when /create new user page\s?page/
+
     when /the create new recip page/
-       new_user_recipe(Recipe.find_by(name: 'calulu').user_id)
+     new_user_recipe(User.ids)
+    when /the create new user page/
+      new_user_path
     when /the details page for 'Calulu'/
       recipe_path(Recipe.where(name: 'calulu').ids)
     when /comment page/

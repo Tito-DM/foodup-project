@@ -33,31 +33,32 @@ Given("I  click {string}") do |link|
 end
 
 When /^I press on (.*)$/ do |button|
+  find('input[value= "Create User"]').click  if button == "create user"
 
-  if button = "create recipe"
-  find('input[value= "Create Recipe"]').click
-  end
+  find('input[value= "Create Recipe"]').click if button == "create recipe"
 
-  if button = 'comment'
-  find('input[id= "comment"]').click
-  end
+  # if button = 'comment'
+  # find('input[id= "comment"]').click
+  # end
 
-  if button = 'add comment'
-    find('input[value= "add comment"]').click
-  end
+  # if button = 'add comment'
+  #   find('input[value= "add comment"]').click
+  # end
 
-  if button = 'add step'
-  find('input[value= "add step"]').click
-  end
+  # if button = 'add step'
+  # find('input[value= "add step"]').click
+  # end
 
-  if button = 'add ingredient'
-  find('input[value= "add ingredient"]').click
-  end
+  # if button = 'add ingredient'
+  # find('input[value= "add ingredient"]').click
+  # end
 
 end
 
 Then("the number of {string} on the database should be {int}") do |string, int|
-   expect(Recipe.count).to eq int if string = 'recip'
+  expect(User.count).to eq int if string == "user"
+  expect(Recipe.count).to eq int if string == 'recip'
+
 end
 
 Then("I should see {string}") do |string|
