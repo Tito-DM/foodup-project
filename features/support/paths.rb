@@ -11,8 +11,7 @@ module NavigationHelpers
     case page_name
 
     when /the home\s?page/
-      recipes_path
-
+     '/'
     when /edit recipe\s?page/
        edit_user_recipe_path(1,1)
     when /the create new recip page/

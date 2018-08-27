@@ -10,17 +10,17 @@
           <div class="card-content">
             Origin: <%= recipe.origin%>
             <p><%= recipe.description%></p>
-            Created_by: <%= @user.name%>
-            <p>comment:</p>
+           Created_by: <%= recipe.user.name %>
+            comment:
             <% recipe.comment.each do |c|%>
             <%= c.comment%><br/>
             <%end%>
           </div>
           <div class="card-action">
-            <%= link_to 'view', view_user_recipe_path(@user.id, recipe.id), method: :get%>
-            <%= link_to 'comment', new_user_recipe_comment_path(@user.id, recipe.id)%>
-            <%= link_to '<i class="material-icons">thumb_up</i>',new_user_recipe_comment_path(@user.id, recipe.id)%>
-            <%= link_to '<i class="material-icons">favorite</i>',new_user_recipe_comment_path(@user.id, recipe.id)%>
+            <%= link_to 'view', view_user_recipe_path(recipe.user.id, recipe.id), method: :get%>
+            <%= link_to 'comment', new_user_recipe_comment_path(recipe.user.id, recipe.id)%>
+            <%= link_to '<i class="material-icons">thumb_up</i>'.html_safe,new_user_recipe_comment_path(recipe.user.id, recipe.id)%>
+            <%= link_to '<i class="material-icons">favorite</i>'.html_safe,new_user_recipe_comment_path(recipe.user.id, recipe.id)%>
             <%= recipe.created_at%>
           </div>
         </div>

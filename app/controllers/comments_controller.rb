@@ -1,16 +1,18 @@
 class CommentsController < ApplicationController
 
   def new
-    @recipe = Recipe.find(params[:recipe_id])
+    @user = User.find(params[:user_id])
+    @recipe = @user.recipes.find(params[:recipe_id])
     @comment = @recipe.comment.build
   end
 
   def create
-    @recipe = Recipe.find(params[:recipe_id])
+    @user = User.find(params[:user_id])
+    @recipe =  @user.recipes.find(params[:recipe_id])
     @comment = @recipe.comment.create(comment: params[:comment], recipe_id: params[:recipe_id])
     if @comment.save
       flash[:notice] = 'comment was successfully added'
-      redirect_to recipes_path
+      redirect_to user_recipes_path(@user.id)
     end
   end
 
