@@ -3,9 +3,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   #make those function availeble to views
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :user_name
 
   #those methods are availeble to all controler
+  def user_name
+     @current_user = User.find(session[:user_id]) if session[:user_id]
+     @current_user.name
+  end
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end

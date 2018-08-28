@@ -1,11 +1,9 @@
-<h1 class='center'> List of recipe</h1>
-<%= link_to 'login', login_path%>
 <div class = 'container '>
   <% @recipe.each do |recipe | -%>
       <div class="col s12 m7 ">
         <div class="card">
           <div class="card-image">
-            <%= image_tag("img3.jpg", :alt => "rss feed" ,:height => "600px",:width => "400px")%>
+            <%= image_tag("img3.jpg", :alt => "rss feed" , :height => "370px")%>
             <span class="card-title"><%= recipe.name%></span>
           </div>
           <div class="card-content">
