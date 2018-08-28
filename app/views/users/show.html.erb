@@ -1,7 +1,10 @@
 <h1> User Profile </h1>
-
-  <%= link_to 'logout', logout_path, method: :delete %>
-
+  <% if logged_in?%>
+    <%= link_to 'logout', logout_path, method: :delete %>
+    <%else%>
+       <%= link_to 'login', logout_path, method: :delete %>
+        <%= link_to 'sign up', logout_path, method: :delete %>
+  <%end%>
 
 <%= link_to 'create a recipe', new_user_recipe_path(@user.id) %>
 
