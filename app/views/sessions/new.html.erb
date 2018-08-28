@@ -1,5 +1,5 @@
 <h1>Log In</h1>
-<%= form_for :login do |f| %>
+<%= form_for :session, url: login_path do |f| %>
   <div>
     <%= f.label :email %>
     <%= f.text_field :email, autofocus: true %>
@@ -9,7 +9,6 @@
     <%= f.password_field :password %>
   </div>
   <div>
-    <%= f.submit "Log In" %>
+    <%= f.submit "Log In",  class: 'btn green'%>
   </div>
 <% end %>
-  
