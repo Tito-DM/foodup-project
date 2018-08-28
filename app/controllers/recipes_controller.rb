@@ -1,16 +1,16 @@
 class RecipesController < ApplicationController
-
+   before_action :set_user,only: [:edit,:update,:show,:destroy]
+  before_action :require_user, except: [:index,:view]
+  before_action :require_same_user, only: [:edit,:update,:show,:destroy]
   def index
     @recipe = Recipe.all
   end
 
   def new
-    @user = User.find(params[:user_id])
     @recipe = @user.recipes.build
   end
 
   def create
-    @user = User.find(params[:user_id])
     @recipe = @user.recipes.create(recip_params)
     if @recipe.save
       flash[:notice] = 'Recipe was successfully created'
@@ -21,17 +21,21 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:user_id])
     @recipe = @user.recipes.find(params[:id])
   end
 
-  def show
+  def update
     @user = User.find(params[:user_id])
+    @recipe = @user.recipes.find(params[:id])
+    redirect_to user_path(@user.id) if @recipe.update(recip_params)
+  end
+
+
+  def show
     @recipe = @user.recipes.find(params[:id])
   end
 
   def destroy
-    @user = User.find(params[:user_id])
     @recipe =  @user.recipes.find(params[:id])
     @recipe.destroy
     redirect_to user_path(@user.id)
@@ -41,15 +45,22 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
-  def update
-    @user = User.find(params[:user_id])
-    @recipe = @user.recipes.find(params[:id])
-    redirect_to user_path(@user.id) if @recipe.update(recip_params)
-  end
 
    private
   def recip_params
     params.require(:recipe).permit(:name, :origin, :description)
+  end
+
+  def require_same_user
+    @recipe = @user.recipes.find(params[:id])
+    if current_user != @recipe.user
+      flash[:denger] = 'you can only edit or delete your recipe'
+      redirect_to root_path
+    end
+  end
+
+   def set_user
+    @user = User.find(params[:id])
   end
 
 end

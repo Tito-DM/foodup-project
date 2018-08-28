@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
     before_action :set_user, only: [:edit, :update, :show]
+    before_action :require_user
+    before_action :require_same_user, only: [:edit,:update,:show,:destroy]
+
   def new
     @user = User.new
   end
@@ -24,6 +27,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       flash[:success] = 'Your account was updated successfully'
       redirect_to users_path
+    end
   end
 
   private
@@ -31,9 +35,18 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :phone)
   end
 
+   def require_same_user
+    if current_user != @user
+      flash[:denger] = 'you can only acess your account'
+      redirect_to root_path
+    end
+  end
+
   def set_user
     @user = User.find(params[:id])
   end
+
+
 
 
 end
