@@ -13,21 +13,15 @@
     </blockquote>
   </div>
   <div class="card-footer text-muted">
-  <div class="row">
-            <div class="col-sm">
-              <span class='love-dislike'>
-                <%= link_to '<i class="material-icons">thumb_down</i>'.html_safe%>
-                <%= link_to '<i class="material-icons">favorite</i>'.html_safe%>
-              </span>
-            </div>
+                <i class="material-icons">thumb_down</i>
+                <i class="material-icons">favorite</i>
+                 <%= link_to '<i class="material-icons text-danger">delete</i>'.html_safe ,user_recipe_path(@user.id,@recipe.id),method: :delete, data: {confirm: "are you sure want to delete this recipe?"},:class=>"no-padding"%>
+  <%= link_to '<i class="material-icons ">edit</i>'.html_safe ,edit_user_recipe_path(@user.id,@recipe.id), :class=>"no-padding"%>
 
 
-          </div>
+
   </div>
 
-
-
-<h5 class='center'> add ingredients</h5>
 <div class='container'>
 <%= form_tag(user_recipe_ingredients_path(@user.id, @recipe.id),method: :post) do |f|%>
  <div class="row">
@@ -41,19 +35,21 @@
      </div>
 
   </div>
-  <%= submit_tag "Add Ingredient",class:'btn btn-success' %>
+  <%= submit_tag "Add Ingredient",class:'btn btn-success btn-add_ing' %>
 <%end%>
 
 
 
 
-<h5 class ='center'> list of ingredient</h5>
+<h5 class ='text-center text-uppercase font-weight-light '> list of ingredient</h5>
 
   <table class="table">
     <tr>
       <th>Ingredient</th>
       <th>Qty</th>
       <th>create at</th>
+      <th></th>
+      <th></th>
     </tr>
     <% @recipe.ingredient.each do |ingredients| -%>
       <tr>
@@ -69,15 +65,14 @@
   </table>
 
 
-<%= form_tag(user_recipe_steps_path(@user.id, @recipe.id),method: :post, class: 'form-inline') do |f|%>
- <div class="form-group mx-sm-3 mb-2">
-  <%= label_tag :step, "step", class: 'sr-only' %>
-  <h5 class = 'center'> add Step</h5> <%= text_field_tag :step, "", class: 'form-control' %>
+<%= form_tag(user_recipe_steps_path(@user.id, @recipe.id),method: :post) do |f|%>
+ <div class="form-group ">
+  <%= text_field_tag :step, "", class: 'form-control input-margin-top',placeholder:"enter the steps here" %>
   </div>
   <%= submit_tag "Add step",class:'btn btn-success' %>
 <%end%>
 
-<h5 class = 'center'> list of Steps</h4>
+<h5 class = 'text-center text-uppercase font-weight-light'> list of Steps</h4>
 
   <table class="table">
     <%@recipe.steps.each do |step| -%>
@@ -88,8 +83,7 @@
       </tr>
     <%end-%>
   </table>
-  <%= link_to 'delete recipe' ,user_recipe_path(@user.id,@recipe.id),method: :delete, data: {confirm: "are you sure?"}  %>
-  <%= link_to 'edit recipe' ,edit_user_recipe_path(@user.id,@recipe.id)%>
+
   </div>
 
 

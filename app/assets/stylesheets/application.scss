@@ -22,7 +22,7 @@
  @import "font-awesome";
  @import "bootstrap";
  body{
-   background-color: whitesmoke;
+   background-color: rgb(250, 244, 244);
  }
 
  .text-size{
@@ -85,12 +85,25 @@
 }
 
 .container{
-  margin-top:4rem;
+  margin-top:3.8rem;
   width: 100vw !important;
 }
 
 a {
   padding-right: 5rem;
   position: relative;
+}
+
+.btn-add_ing{
+  margin-top: 1rem ;
+  margin-bottom: 2rem;
+}
+
+.input-margin-top{
+  margin-top: 5rem;
+}
+
+.no-padding{
+  padding: 0 !important;
 }
 
