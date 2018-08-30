@@ -13,11 +13,36 @@
  *= require_tree .
  *= require_self
  */
-@import "materialize/components/color-variables";
-$primary-color: color("blue", "lighten-2") !default;
-$secondary-color: color("yellow", "base") !default;
- @import "materialize";
+// @import "materialize/components/color-variables";
+// $primary-color: color("blue", "lighten-2") !default;
+// $secondary-color: color("yellow", "base") !default;
+// //  @import "materialize";
+//  @import "materialize/extras/nouislider";
  @import "https://fonts.googleapis.com/icon?family=Material+Icons";
  @import "font-awesome";
+ @import "bootstrap";
+ body{
+   background-color: whitesmoke;
+ }
 
+ header{
+   background-color: aquamarine;
+   height: 50vh;
+ }
+
+ .dot {
+   height: 25px;
+   width: 25px;
+   color: whitesmoke;
+   text-align: center;
+   background-color: rgb(73, 70, 70);
+   border-radius: 50%;
+   display: inline-block;
+ }
+
+ .navbar-right {
+   float: right !important;
+   padding-right: 34px;
+   text-align: right;
+ }
 

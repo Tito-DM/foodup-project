@@ -1,30 +1,31 @@
 <div class = 'container '>
   <% @recipe.each do |recipe | -%>
-      <div class="col s12 m7 ">
-        <div class="card">
-          <div class="card-image">
-            <%= image_tag("img3.jpg", :alt => "rss feed" , :height => "370px")%>
-            <span class="card-title"><%= recipe.name%></span>
-          </div>
-          <div class="card-content">
-            Origin: <%= recipe.origin%>
-            <p><%= recipe.description%></p>
-           Created_by: <%= recipe.user.name if recipe.user %>
+
+  <div class="card mb-3">
+  <%= image_tag("img3.jpg", :alt => "rss feed" , :class=>"card-img-top")%>
+  <div class="card-body">
+    <h5 class="card-title"><%= recipe.name%></h5>
+     Origin: <%= recipe.origin%>
+      Created_by: <%= recipe.user.name if recipe.user %>
             comment:
             <% recipe.comment.each do |c|%>
             <%= c.comment%><br/>
             <%end%>
-          </div>
-          <div class="card-action">
-            <%= link_to 'view', view_user_recipe_path(recipe.user.id, recipe.id), method: :get%>
-            <%= link_to 'comment', new_user_recipe_comment_path(recipe.user.id, recipe.id)%><%=recipe.comment.count%>
+    <p class="card-text"><%= recipe.description%></p>
+  </div>
+  <div class="card-footer">
+       <%= link_to 'view', view_user_recipe_path(recipe.user.id, recipe.id), method: :get%>
+            <%= link_to 'comment', new_user_recipe_comment_path(recipe.user.id, recipe.id)%>
+            <span class="dot"><%=recipe.comment.count%></span>
             <%= link_to '<i class="material-icons">thumb_up</i>'.html_safe%>
             <%= link_to '<i class="material-icons">favorite</i>'.html_safe%>
-            created <%= time_ago_in_words(recipe.created_at)%> ago
-          </div>
-        </div>
-      </div>
-  <% end -%>
-
+            <small class="text-muted"> created <%= time_ago_in_words(recipe.created_at)%> ago</small>
+    </div>
 </div>
+<%end%>
+
+
+
+
+
 

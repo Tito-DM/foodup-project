@@ -11,15 +11,26 @@
 <div class= 'container'>
 
 <%= form_for @user do |f|%>
-<%= f.label :name%>
-<%= f.text_field :name%>
-<%= f.label :email%>
-<%= f.email_field :email%>
-<%= f.label :password%>
-<%= f.password_field :password%>
-<%= f.label :phone%>
-<%= f.phone_field :phone%>
-<%= f.submit :class => "btn green" %>
+  <div class="form-group">
+    <%= f.label :name%>
+    <%= f.text_field :name, autofocus: true, :class=>"form-control", :id=>"exampleInputEmail1", :placeholder=>"Enter name"%>
+  </div>
+   <div class="form-group">
+    <%= f.label :phone%>
+   <%= f.phone_field :phone, autofocus: true, :class=>"form-control", :id=>"exampleInputEmail1", :placeholder=>"Enter Phonr number"%>
+  </div>
+   <div class="form-group">
+    <%= f.label :email%>
+   <%= f.email_field :email, autofocus: true, :class=>"form-control", :id=>"exampleInputEmail1", :placeholder=>"Enter email"%>
+  </div>
+  <div class="form-group">
+   <%= f.label :password%>
+   <%= f.password_field :password, autofocus: true, :class=>"form-control", :id=>"exampleInputEmail1", :placeholder=>"Password"%>
+  </div>
+    <%= f.submit 'Sign Up', :class => 'btn btn-success' %>
 <%end%>
+
+
+
 
 </div>

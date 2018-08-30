@@ -1,11 +1,24 @@
-<p>name:<%= @recipe.name%></p>
-<p>origin:<%= @recipe.origin%></p>
-<p>description:<%= @recipe.description%></p>
+<header>
 
+</header>
+ <div class="card-header">
+    Featured
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">name:<%= @recipe.name%></h5>
+    <h5 class="card-title">origin:<%= @recipe.origin%></h5>
+    <p class="card-text">description:<%= @recipe.description%></p>
+  </div>
+  <div class="card-footer text-muted">
+    2 days ago
+  </div>
 
+  <div class="container">
+  <div class="row">
+  <div class="col-6">
 <h5 class ='center'> list of ingredient</h5>
 
-  <table class="responsive-table">
+  <table class="table">
     <tr>
       <th>Ingredient</th>
       <th>Qty</th>
@@ -21,13 +34,23 @@
 
   </table>
 
-
+  </div>
+    <div class="col-6">
 <h5 class = 'center'> list of Steps</h4>
 
-  <table class="responsive-table">
+  <table class="table">
     <%@recipe.steps.each do |step| -%>
      <tr>
         <td><%= step.step%></td>
       </tr>
     <%end-%>
   </table>
+
+  </div>
+</div>
+
+</div>
+
+
+
+
