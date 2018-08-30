@@ -2,15 +2,40 @@
 
 </header>
  <div class="card-header">
-    Featured
+    <small class="text-muted">Name: <%=@recipe.name%></small><br/>
+    <small class="text-muted">Origin: <%=@recipe.origin%></small><br/>
+    <small class="text-muted">Created_by: <%=@recipe.user.name%></small>
   </div>
   <div class="card-body">
-    <h5 class="card-title">name:<%= @recipe.name%></h5>
-    <h5 class="card-title">origin:<%= @recipe.origin%></h5>
-    <p class="card-text">description:<%= @recipe.description%></p>
+    <blockquote class="blockquote">
+    <small class="text-muted"><p class="lead text-size" ><%= @recipe.description%></p></small>
+     <footer class="blockquote-footer">description</footer>
+    </blockquote>
   </div>
   <div class="card-footer text-muted">
-    2 days ago
+  <div class="row">
+            <div class="col-sm">
+              <span class="comment-view">
+                <a href='#' class="card-view-comment" data-toggle="modal" data-target="#comment_model" data-whatever="@mdo">comment</a>
+                <span class="dot"><%=@recipe.comment.count%></span>
+              </span>
+            </div>
+
+            <div class="col-sm">
+              <span class='love-dislike'>
+                <%= link_to '<i class="material-icons">thumb_down</i>'.html_safe%>
+                <%= link_to '<i class="material-icons">favorite</i>'.html_safe%>
+              </span>
+            </div>
+
+            <div class="col-sm">
+              <span class= "time-card">
+                <small class="text-muted"> Created <%= time_ago_in_words(@recipe.created_at)%> ago</small>
+                <small class="text-muted"> | Last Update <%= time_ago_in_words(@recipe.updated_at)%> ago</small>
+              </span>
+            </div>
+
+          </div>
   </div>
 
   <div class="container">

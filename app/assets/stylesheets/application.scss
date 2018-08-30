@@ -25,15 +25,31 @@
    background-color: whitesmoke;
  }
 
+ .text-size{
+   font-size: 16px;
+
+ }
+
  header{
-   background-color: aquamarine;
-   height: 50vh;
+   background-image: image-url('food1.jpg');
+   background-position: center;
+   background-size: cover;
+   height: 60vh;
+ }
+ .bckg{
+   background-image: image-url('food.jpg');
+   background-position: center;
+   background-size: cover;
+  height: 50vh;
+
  }
 
  .dot {
    height: 25px;
    width: 25px;
    color: whitesmoke;
+   padding:2px;
+   margin-left:-5px;
    text-align: center;
    background-color: rgb(73, 70, 70);
    border-radius: 50%;
@@ -45,4 +61,36 @@
    padding-right: 34px;
    text-align: right;
  }
+.time-card{
+  float: right;
+}
+.comment-view{
+  text-transform: uppercase;
+  display: inline;
+   margin-top: 3px;
+
+}
+.card-view-comment{
+  display: inline-block;
+  padding: 5px;
+}
+
+.card-view-comment:hover {
+  color: orange;
+  text-decoration: none;
+}
+
+.love-dislike{
+  text-align: center;
+}
+
+.container{
+  margin-top:4rem;
+  width: 100vw !important;
+}
+
+a {
+  padding-right: 5rem;
+  position: relative;
+}
 

@@ -1,28 +1,111 @@
 <div class = 'container '>
   <% @recipe.each do |recipe | -%>
+    <div class="card mb-3 ">
+       <div class="card-header bckg">
+       </div>
+       <div class="card-body">
+        <div class="card-header bg-info">
+        <small class=" text-light">Name: <%=recipe.name%></small><br/>
+         <small class=" text-light">Origin: <%=recipe.origin%></small><br/>
+         <small class=" text-light">Created_by: <%=recipe.user.name%></small>
+         </div>
+          <blockquote class="blockquote">
+            <small class="text-muted"><p class="lead text-size" ><%= recipe.description%></p></small>
+            <footer class="blockquote-footer">description</footer>
+          </blockquote>
 
-  <div class="card mb-3">
-  <%= image_tag("img3.jpg", :alt => "rss feed" , :class=>"card-img-top")%>
-  <div class="card-body">
-    <h5 class="card-title"><%= recipe.name%></h5>
-     Origin: <%= recipe.origin%>
-      Created_by: <%= recipe.user.name if recipe.user %>
-            comment:
+       </div>
+       <div class="card-footer">
+          <div class="row">
+            <div class="col-sm">
+              <span class="comment-view">
+                <%= link_to 'view', view_user_recipe_path(recipe.user.id, recipe.id), method: :get, :class=>'card-view-comment text-warning'%>
+                <a href='#' class="card-view-comment text-warning" data-toggle="modal" data-target="#comment_model" data-whatever="@mdo">comment</a>
+                <span class="dot"><%=recipe.comment.count%></span>
+              </span>
+            </div>
+
+            <div class="col-sm">
+              <span class='love-dislike'>
+                <span class="dot">0</span>
+                <%= link_to '<i class="material-icons text-warning">thumb_down</i>'.html_safe, :class=> "dislike"%>
+                <span class="dot">0</span>
+                <%= link_to '<i class="material-icons text-danger">favorite</i>'.html_safe %>
+
+              </span>
+            </div>
+
+            <div class="col-sm">
+              <span class= "time-card">
+                <small class="text-muted"> Created <%= time_ago_in_words(recipe.created_at)%> ago</small>
+                <small class="text-muted"> | Last Update <%= time_ago_in_words(recipe.updated_at)%> ago</small>
+              </span>
+            </div>
+
+          </div>
+       </div>
+    </div>
+    <div class="modal fade" id="comment_model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Comments</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+
             <% recipe.comment.each do |c|%>
             <%= c.comment%><br/>
             <%end%>
-    <p class="card-text"><%= recipe.description%></p>
-  </div>
-  <div class="card-footer">
-       <%= link_to 'view', view_user_recipe_path(recipe.user.id, recipe.id), method: :get%>
-            <%= link_to 'comment', new_user_recipe_comment_path(recipe.user.id, recipe.id)%>
-            <span class="dot"><%=recipe.comment.count%></span>
-            <%= link_to '<i class="material-icons">thumb_up</i>'.html_safe%>
-            <%= link_to '<i class="material-icons">favorite</i>'.html_safe%>
-            <small class="text-muted"> created <%= time_ago_in_words(recipe.created_at)%> ago</small>
+          </div>
+
+          <div class="modal-footer">
+            <%= form_tag(user_recipe_comments_path(recipe.user.id, recipe.id),method: :post) do |f|%>
+              <div class="row">
+                <div class="col">
+                  <%= text_field_tag :comment,"" ,class:'form-control',placeholder:"Enter comment" %>
+                </div>
+                <div class="col">
+                  <%= submit_tag "add comment",class:'btn btn-success'%>
+                </div>
+             </div>
+          <%end%>
+        </div>
+
+        </div>
+      </div>
     </div>
+  <%end%>
 </div>
-<%end%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- model trigger-->
+
+
+
+
+
+
+
+
+
+
+
 
 
 

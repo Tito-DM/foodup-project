@@ -1,7 +1,29 @@
+<header>
 
-<p>name:<%= @recipe.name%></p>
-<p>origin:<%= @recipe.origin%></p>
-<p>description:<%= @recipe.description%></p>
+</header>
+ <div class="card-header">
+    <small class="text-muted">Name: <%=@recipe.name%></small><br/>
+    <small class="text-muted">Origin: <%=@recipe.origin%></small><br/>
+    <small class="text-muted">Created_by: <%=@recipe.user.name%></small>
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote">
+    <small class="text-muted"><p class="lead text-size" ><%= @recipe.description%></p></small>
+     <footer class="blockquote-footer">description</footer>
+    </blockquote>
+  </div>
+  <div class="card-footer text-muted">
+  <div class="row">
+            <div class="col-sm">
+              <span class='love-dislike'>
+                <%= link_to '<i class="material-icons">thumb_down</i>'.html_safe%>
+                <%= link_to '<i class="material-icons">favorite</i>'.html_safe%>
+              </span>
+            </div>
+
+
+          </div>
+  </div>
 
 
 
