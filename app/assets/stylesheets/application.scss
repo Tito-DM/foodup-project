@@ -31,16 +31,14 @@
  }
 
  header{
-   background-image: image-url('food1.jpg');
    background-position: center;
    background-size: cover;
-   height: 60vh;
+   height: 70vh;
  }
  .bckg{
-   background-image: image-url('food.jpg');
    background-position: center;
    background-size: cover;
-  height: 50vh;
+  height: 60vh;
 
  }
 
@@ -55,6 +53,19 @@
    border-radius: 50%;
    display: inline-block;
  }
+
+  .dot-big {
+    height: 30px;
+    width: 30px;
+    color: whitesmoke;
+    padding: 2px !important;
+    padding-top:20px;
+    margin-left: -5px;
+    text-align: center;
+    background-color: orange;
+    border-radius: 50%;
+    display: inline-block;
+  }
 
  .navbar-right {
    float: right !important;

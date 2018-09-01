@@ -22,6 +22,6 @@
 //= require popper
 //= require bootstrap-sprockets
 
-$('.carousel').carousel()
+
 
 

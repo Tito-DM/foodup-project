@@ -1,6 +1,7 @@
-<header>
 
-</header>
+
+  <header class="foobar" style="background-image: url(<%= @recipe.image.url %>)"></header>
+
  <div class="card-header">
     <small class="text-muted">Name: <%=@recipe.name%></small><br/>
     <small class="text-muted">Origin: <%=@recipe.origin%></small><br/>
@@ -42,15 +43,16 @@
   <div class="row">
   <div class="col-6">
 <h5 class ='center'> list of ingredient</h5>
-
   <table class="table">
     <tr>
+      <th></th>
       <th>Ingredient</th>
       <th>Qty</th>
       <th>create at</th>
     </tr>
     <% @recipe.ingredient.each do |ingredients| -%>
       <tr>
+        <th id="counter" class="dot-big"><%=counter%></th>
         <td><%= ingredients.ingredient%></td>
         <td><%= ingredients.qty%></td>
         <td><%= ingredients.created_at%></td>
@@ -75,6 +77,8 @@
 </div>
 
 </div>
+
+
 
 
 

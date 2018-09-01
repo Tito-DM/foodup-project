@@ -48,7 +48,7 @@ class RecipesController < ApplicationController
 
    private
   def recip_params
-    params.require(:recipe).permit(:name, :origin, :description)
+    params.require(:recipe).permit(:name, :origin, :description, :image)
   end
 
   def require_same_user
