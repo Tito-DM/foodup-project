@@ -10,13 +10,15 @@ Feature: Edit and delete ingredients
     Given 'angola@center.com' has the following recipe exist:
       | name   | origin | description      |
       | calulu | Angola | tipico de angola |
-
     Given 'calulu' has the following ingredient exist:
       | ingredient  | qty |
       | rice        | 3kg |
-    # Given 'calulu' has the following step exist:
-    #   | step  |
-    #   | mix rice with fish |
+    Given I am on the home page
+    When I click on 'Log In'
+    Then I fill in 'session[email]' with 'angola@center.com'
+    And I fill in 'session[password]' with 'foo'
+    And I click on 'Sign In'
+    Then I should see 'Successfully logged in!'
     And I visit the 'angola@center.com' recipe 'calulu' show page
 
   Scenario: edit ingredient

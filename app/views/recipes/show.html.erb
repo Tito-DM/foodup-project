@@ -14,8 +14,8 @@
   <div class="card-footer text-muted">
                 <i class="material-icons">thumb_down</i>
                 <i class="material-icons">favorite</i>
-                 <%= link_to '<i class="material-icons text-danger">delete</i>'.html_safe ,user_recipe_path(@user.id,@recipe.id),method: :delete, data: {confirm: "are you sure want to delete this recipe?"},:class=>"no-padding"%>
-  <%= link_to '<i class="material-icons ">edit</i>'.html_safe ,edit_user_recipe_path(@user.id,@recipe.id), :class=>"no-padding"%>
+                 <%= link_to '<i class="material-icons text-danger">delete recipe</i>'.html_safe ,user_recipe_path(@user.id,@recipe.id),method: :delete, data: {confirm: "are you sure want to delete this recipe?"},:class=>"no-padding"%>
+  <%= link_to '<i class="material-icons ">edit recipe</i>'.html_safe ,edit_user_recipe_path(@user.id,@recipe.id), :class=>"no-padding"%>
 
 
 

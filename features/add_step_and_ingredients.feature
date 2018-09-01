@@ -12,14 +12,19 @@ Feature: View recipe profile
     Given 'angola@center.com' has the following recipe exist:
       | name   | origin | description      |
       | calulu | Angola | tipico de angola |
-
+    Given I am on the home page
+    When I click on 'Log In'
+    Then I fill in 'session[email]' with 'angola@center.com'
+    And I fill in 'session[password]' with 'foo'
+    And I click on 'Sign In'
+    Then I should see 'Successfully logged in!'
     And I visit the 'angola@center.com' recipe 'calulu' show page
 
 
   Scenario: Add ingredients
     When  I fill in 'Ingredient' with 'rice'
     And   I fill in 'Qty' with '3kg'
-    And   I press on add ingredient
+    And   I press on Add Ingredient
     Then  I should see 'Ingredient was successfully add'
     And   I should see 'rice'
     And   I should see '3kg'
@@ -28,20 +33,20 @@ Feature: View recipe profile
   Scenario: validate ingredients
     When  I fill in 'ingredient' with ''
     And   I fill in 'qty' with ''
-    And   I press on add ingredient
+    And   I press on Add Ingredient
     Then  I should see "Ingredient can't be blank"
     And   I should see "Qty can't be blank"
 
   Scenario: Add step
     When  I fill in 'step' with 'add rice and bees'
-    And   I press on add step
+    And   I press on Add step
     Then  I should see 'Step was successfully add'
     And   I should see 'add rice and bees'
 
 
   Scenario: validate step
     When  I fill in 'step' with ''
-    And   I press on add step
+    And   I press on Add step
     Then  I should see "Step can't be blank"
 
 

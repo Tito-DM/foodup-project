@@ -118,3 +118,22 @@ a {
   padding: 0 !important;
 }
 
+footer{
+  color: whitesmoke;
+  margin-bottom: 0;
+}
+.bg-copyright{
+  background-color: rgb(57, 62, 68);
+}
+
+@media (min-width: 768px){
+  .container{
+  max-width: 940px !important;
+}
+}
+
+@media (min-width: 1200px) {
+  .container {
+  max-width: 1220px !important;
+}
+}

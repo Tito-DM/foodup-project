@@ -11,21 +11,28 @@ Feature: login a user
 
   Scenario: login
     Given I am on the home page
-    When I click on 'login'
-    Then I fill in 'Email' with 'angola@center.com'
-    And I fill in 'Password' with 'foo1234'
-    And I click on 'Log In'
+    When I click on 'Log In'
+    Then I fill in 'session[email]' with 'angola@center.com'
+    And I fill in 'session[password]' with 'foo1234'
+    And I click on 'Sign In'
     Then I should see 'Successfully logged in!'
+
+  Scenario: logout
+    Given I am on the home page
+    When I click on 'Log In'
+    Then I fill in 'session[email]' with 'angola@center.com'
+    And I fill in 'session[password]' with 'foo1234'
+    And I click on 'Sign In'
+    Then I should see 'Successfully logged in!'
+    Given I visit the 'angola@center.com' show page
+    When I click on 'Log Out'
+    Then I should see 'Logged out!'
 
   Scenario: validate login
     Given I am on the home page
-    When I click on 'login'
-    Then I fill in 'Email' with 'angola@centers.com'
-    And I fill in 'Password' with 'foo'
-    And I click on 'Log In'
+    When I click on 'Log In'
+    Then I fill in 'session[email]' with 'angola@centers.com'
+    And I fill in 'session[password]' with 'foo'
+    And I click on 'Sign In'
     Then I should see 'Incorrect email or password, try again.'
 
-  Scenario: logout
-    Given I visit the 'angola@center.com' show page
-    When I click on 'logout'
-    Then I should see 'Logged out!'

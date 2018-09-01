@@ -8,6 +8,7 @@ Given("{string} has the following recipe exist:") do |email, recipe_table|
 end
 
 
+
 Given("the following ingredients exist:") do |ingredient_table|
   ingredient_table.hashes.each do |ingredient|
     recipe = Recipe.find(ingredient[:id])
@@ -34,10 +35,10 @@ Given("I  click {string}") do |link|
 end
 
 When /^I press on (.*)$/ do |button|
-  find('input[value= "Create User"]').click  if button == "create user"
+  find('input[value= "Sign Up"]').click  if button == "Sign Up"
   find('input[value= "Create Recipe"]').click if button == "create recipe"
-  find('input[value= "add ingredient"]').click if button == 'add ingredient'
-  find('input[value= "add step"]').click if button == 'add step'
+  find('input[value= "Add Ingredient"]').click if button == 'Add Ingredient'
+  find('input[value= "Add step"]').click if button == 'Add step'
 
 
 
@@ -54,12 +55,12 @@ end
 
 
 
-Then("The number of {string} should be igual {int}") do |string, int|
-  expect(User.count).to eq int if string == "user"
+
+Then("the number of {string} on the database should be {int}") do |string, int|
+ expect(User.count).to eq int if string == "user"
   expect(Recipe.count).to eq int if string == 'recip'
    expect(Recipe.count).to eq int if string == 'recipe-del'
 end
-
 Then("I should see {string}") do |string|
   page.should have_content(string)
 end

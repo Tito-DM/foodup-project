@@ -15,6 +15,12 @@ Feature: Edit and delete steps
       | step |
       | mix rice with water|
 
+    Given I am on the home page
+    When I click on 'Log In'
+    Then I fill in 'session[email]' with 'angola@center.com'
+    And I fill in 'session[password]' with 'foo'
+    And I click on 'Sign In'
+    Then I should see 'Successfully logged in!'
     And I visit the 'angola@center.com' recipe 'calulu' show page
 
   Scenario: edit step
