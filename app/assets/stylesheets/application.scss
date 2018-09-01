@@ -22,7 +22,7 @@
  @import "font-awesome";
  @import "bootstrap";
  body{
-   background-color: rgb(250, 244, 244);
+   background-color: whitesmoke;
  }
 
  .text-size{
@@ -129,11 +129,15 @@ footer{
 @media (min-width: 768px){
   .container{
   max-width: 940px !important;
-}
+  }
 }
 
 @media (min-width: 1200px) {
   .container {
   max-width: 1220px !important;
+  }
 }
+
+.text-logo{
+  color: rgb(161, 113, 22) !important;
 }
