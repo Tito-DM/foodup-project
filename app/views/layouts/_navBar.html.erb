@@ -34,9 +34,16 @@
           </li>
       <%end%>
     </ul>
-    <form class="form-inline my-2 my-lg-0 mx-auto">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <%= form_tag(user_recipes_path(current_user), method: "get", class: 'form-inline my-2 my-lg-0 mx-auto') do %>
+      <%= text_field_tag :q,"", class: 'form-control mr-sm-2', placeholder: 'search recipes' %>
+      <%= submit_tag "Search",class:"btn btn-success btn-search" %>
+      <%= radio_button_tag(:search, "name") %>
+      <%= label_tag :reccipe_name, "name", class: 'text-white' %>
+      <%= radio_button_tag(:search, "origin") %>
+      <%= label_tag :recipe_origin, "origin", class: 'text-white'%>
+      <%= radio_button_tag(:search, "create_by") %>
+      <%= label_tag :recipe_creater, "create_by",class: 'text-white' %>
+    <% end %>
+
   </div>
 </nav>

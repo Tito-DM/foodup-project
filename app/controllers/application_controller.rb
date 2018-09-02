@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   #those methods are availeble to all controler
   def counter
-    
+
   end
 
   def user_name

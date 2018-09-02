@@ -3,7 +3,11 @@ class RecipesController < ApplicationController
   before_action :require_user, except: [:index,:view]
   before_action :require_same_user, only: [:edit,:update,:show,:destroy]
   def index
+
     @recipe = Recipe.all
+    return @recipe = Recipe.where("name LIKE ? ", "#{params[:q]}%").all if params[:search] == 'name'
+    return @recipe = Recipe.where("origin LIKE ? ", "#{params[:q]}%").all if params[:search] == 'origin'
+    return @recipe = Recipe.joins(:user).where(:users => {:name => "#{params[:q]}"})  if params[:search] =='create_by'
   end
 
   def new
@@ -64,3 +68,5 @@ class RecipesController < ApplicationController
   end
 
 end
+
+
