@@ -37,8 +37,8 @@
     <%= form_tag(index_path, method: "get", class: 'form-inline my-2 my-lg-0 mx-auto') do %>
       <%= text_field_tag :q,"", class: 'form-control mr-sm-2', placeholder: 'search recipes' %>
       <%= submit_tag "Search",class:"btn btn-success btn-search" %>
-      <%= radio_button_tag(:search, "name") %>
-      <%= label_tag :reccipe_name, "name", class: 'text-white' %>
+      <%= radio_button_tag :search, "name",class:'form-control' %>
+      <%= label_tag :reccipe_name, "name", class: 'text-white ' %>
       <%= radio_button_tag(:search, "origin") %>
       <%= label_tag :recipe_origin, "origin", class: 'text-white'%>
       <%= radio_button_tag(:search, "create_by") %>
