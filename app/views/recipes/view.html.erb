@@ -1,11 +1,12 @@
 
 
   <header class="foobar" style="background-image: url(<%= @recipe.image.url %>)"></header>
-
- <div class="card-header">
-    <small class="text-muted">Name: <%=@recipe.name%></small><br/>
-    <small class="text-muted">Origin: <%=@recipe.origin%></small><br/>
-    <small class="text-muted">Created_by: <%=@recipe.user.name%></small>
+ <div class="card-body">
+ <div class="card-header  bg-info ">
+    <small class="text-light">Name: <%=@recipe.name%></small><br/>
+    <small class="text-light">Origin: <%=@recipe.origin%></small><br/>
+    <small class="text-light">Created_by: <%=@recipe.user.name%></small>
+  </div>
   </div>
   <div class="card-body">
     <blockquote class="blockquote">
@@ -13,19 +14,22 @@
      <footer class="blockquote-footer">description</footer>
     </blockquote>
   </div>
-  <div class="card-footer text-muted">
+  <div class="card-footer text-muted shadow-lg p-3 mb-5 footer-view_color rounded">
   <div class="row">
             <div class="col-sm">
               <span class="comment-view">
-                <a href='#' class="card-view-comment" data-toggle="modal" data-target="#comment_model" data-whatever="@mdo">comment</a>
+                <a href='#' class="card-view-comment  text-warning" data-toggle="modal" data-target="#comment_model" data-whatever="@mdo">comment</a>
                 <span class="dot"><%=@recipe.comment.count%></span>
               </span>
             </div>
 
             <div class="col-sm">
               <span class='love-dislike'>
+                <span class="dot">0</span>
                 <%= link_to '<i class="material-icons">thumb_down</i>'.html_safe%>
-                <%= link_to '<i class="material-icons">favorite</i>'.html_safe%>
+                <span class="dot">0</span>
+                <%= link_to '<i class="material-icons text-danger">favorite</i>'.html_safe%>
+
               </span>
             </div>
 
@@ -42,7 +46,7 @@
   <div class="container">
   <div class="row">
   <div class="col-6">
-<h5 class ='center'> list of ingredient</h5>
+<h5 class ='text-center'> list of ingredient</h5>
   <table class="table">
     <tr>
       <th></th>
@@ -63,11 +67,12 @@
 
   </div>
     <div class="col-6">
-<h5 class = 'center'> list of Steps</h4>
+<h5 class = 'text-center'> list of Steps</h4>
 
   <table class="table">
     <%@recipe.steps.each do |step| -%>
      <tr>
+        <th id="counter" class="dot-big"><%=counter%></th>
         <td><%= step.step%></td>
       </tr>
     <%end-%>
