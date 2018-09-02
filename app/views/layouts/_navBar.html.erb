@@ -34,7 +34,7 @@
           </li>
       <%end%>
     </ul>
-    <%= form_tag(user_recipes_path(current_user), method: "get", class: 'form-inline my-2 my-lg-0 mx-auto') do %>
+    <%= form_tag(index_path, method: "get", class: 'form-inline my-2 my-lg-0 mx-auto') do %>
       <%= text_field_tag :q,"", class: 'form-control mr-sm-2', placeholder: 'search recipes' %>
       <%= submit_tag "Search",class:"btn btn-success btn-search" %>
       <%= radio_button_tag(:search, "name") %>
