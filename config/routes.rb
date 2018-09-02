@@ -11,8 +11,9 @@ Rails.application.routes.draw do
       get :view, on: :member
       resources :ingredients
       resources :steps
-      resources :rate
       resources :comments
+      resources :dislikes
+      resources :favorites
     end
   end
 

@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-   before_action :set_user,only: [:new,:edit,:update,:show,:destroy,:create]
+  before_action :set_user,only: [:new,:edit,:update,:show,:destroy,:create]
   before_action :require_user, except: [:index,:view]
   before_action :require_same_user, only: [:edit,:update,:show,:destroy]
   def index
@@ -25,12 +25,17 @@ class RecipesController < ApplicationController
   end
 
   def edit
+
     @recipe = @user.recipes.find(params[:id])
   end
 
   def update
+     byebug
     @user = User.find(params[:user_id])
     @recipe = @user.recipes.find(params[:id])
+    if params[:format]
+      @recipe.update_attribute(:dislike,"#{params[:format].to_i}")
+    end
     redirect_to user_path(@user.id) if @recipe.update(recip_params)
   end
 
