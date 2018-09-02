@@ -1,22 +1,37 @@
 <header class="foobar" style="background-image: url(<%= @recipe.image.url %>)"></header>
-
- <div class="card-header">
-    <small class="text-muted">Name: <%=@recipe.name%></small><br/>
-    <small class="text-muted">Origin: <%=@recipe.origin%></small><br/>
-    <small class="text-muted">Created_by: <%=@recipe.user.name%></small>
-  </div>
+<div class="card-body">
+    <div class="card-header bg-info">
+    <small class="text-light">Name: <%=@recipe.name%></small><br/>
+    <small class="text-light">Origin: <%=@recipe.origin%></small><br/>
+    <small class="text-light">Created_by: <%=@recipe.user.name%></small>
+    </div>
+</div>
   <div class="card-body">
     <blockquote class="blockquote">
     <small class="text-muted"><p class="lead text-size" ><%= @recipe.description%></p></small>
      <footer class="blockquote-footer">description</footer>
     </blockquote>
   </div>
-  <div class="card-footer text-muted">
-                <i class="material-icons">thumb_down</i>
-                <i class="material-icons">favorite</i>
-                 <%= link_to '<i class="material-icons text-danger">delete recipe</i>'.html_safe ,user_recipe_path(@user.id,@recipe.id),method: :delete, data: {confirm: "are you sure want to delete this recipe?"},:class=>"no-padding"%>
-  <%= link_to '<i class="material-icons ">edit recipe</i>'.html_safe ,edit_user_recipe_path(@user.id,@recipe.id), :class=>"no-padding"%>
+  <div class="card-footer text-muted shadow-lg p-3 mb-5 footer-view_color rounded">
+      <div class="row">
+         <div class="col-sm ">
+           <span class="dot">0</span>
+           <i class="material-icons text-info">thumb_down</i>
+           <span class="dot">0</span>
+           <i class="material-icons text-danger">favorite</i>
+         </div>
 
+          <div class="col-sm">
+            <%= link_to '<i class="material-icons text-danger">delete recipe</i>'.html_safe ,user_recipe_path(@user.id,@recipe.id),method: :delete, data: {confirm: "are you sure want to delete this recipe?"},:class=>"no-padding"%>
+  <%= link_to '<i class="material-icons ">edit recipe</i>'.html_safe ,edit_user_recipe_path(@user.id,@recipe.id), :class=>"no-padding"%>
+         </div>
+          <div class="col-sm">
+              <span class= "time-card">
+                <small class="text-muted"> Created <%= time_ago_in_words(@recipe.created_at)%> ago</small>
+                <small class="text-muted"> | Last Update <%= time_ago_in_words(@recipe.updated_at)%> ago</small>
+              </span>
+            </div>
+      </div>
 
 
   </div>
