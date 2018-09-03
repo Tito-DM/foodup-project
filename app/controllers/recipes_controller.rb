@@ -4,9 +4,9 @@ class RecipesController < ApplicationController
   before_action :require_same_user, only: [:edit,:update,:show,:destroy]
   def index
     @recipe = Recipe.all.order(created_at: :desc)
-    return @recipe = Recipe.where("name LIKE ? ", "#{params[:q]}%").all if params[:search] == 'name'
-    return @recipe = Recipe.where("origin LIKE ? ", "#{params[:q]}%").all if params[:search] == 'origin'
-    return @recipe = Recipe.joins(:user).where(:users => {:name => "#{params[:q]}"})  if params[:search] =='create_by'
+    return @recipe = Recipe.where("name LIKE ? ", "#{params[:search_field]}%").all if params[:search] == 'name'
+    return @recipe = Recipe.where("origin LIKE ? ", "#{params[:search_field]}%").all if params[:search] == 'origin'
+    return @recipe = Recipe.joins(:user).where(:users => {:name => "#{params[:search_field]}"})  if params[:search] =='create_by'
   end
 
 
@@ -25,12 +25,10 @@ class RecipesController < ApplicationController
   end
 
   def edit
-
     @recipe = @user.recipes.find(params[:id])
   end
 
   def update
-     byebug
     @user = User.find(params[:user_id])
     @recipe = @user.recipes.find(params[:id])
     if params[:format]

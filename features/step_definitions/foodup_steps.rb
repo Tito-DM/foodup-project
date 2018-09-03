@@ -7,6 +7,11 @@ Given("{string} has the following recipe exist:") do |email, recipe_table|
   end
 end
 
+When /^(?:|I )check "([^"]*)"$/ do |field|
+  find('#search_name[value= "name"]').click if field == "name"
+  find('#search_origin[value= "origin"]').set(true) if field == "origin"
+  find('#search_create_by[value= "create_by"]').click if field == "creater"
+end
 
 
 Given("the following ingredients exist:") do |ingredient_table|
