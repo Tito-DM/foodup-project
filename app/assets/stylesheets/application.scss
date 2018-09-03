@@ -130,6 +130,16 @@ footer{
   .container{
   max-width: 940px !important;
   }
+  .navbar {
+    height: 10.5vh !important;
+  }
+
+  .navbar-brand{
+    font-size: 2.25rem;
+  }
+  .navbar-toggler {
+    font-size: 2.25rem;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -155,4 +165,5 @@ footer{
 .footer-view_color{
   background-color: rgb(238, 237, 237);
 }
+
 
