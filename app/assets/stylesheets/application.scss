@@ -126,16 +126,19 @@ footer{
   background-color: rgb(57, 62, 68);
 }
 
+
+
 @media (min-width: 768px){
   .container{
+        margin-top: 12rem;
   max-width: 940px !important;
   }
   .navbar {
-    height: 10.5vh !important;
+    height: 12vh !important;
   }
 
   .navbar-brand{
-    font-size: 2.25rem;
+    font-size: 2.22rem;
   }
   .navbar-toggler {
     font-size: 2.25rem;
@@ -144,8 +147,15 @@ footer{
 
 @media (min-width: 1200px) {
   .container {
+     margin-top: 4rem;
   max-width: 1220px !important;
   }
+   .navbar-brand {
+     font-size: 1.25rem;
+   }
+   .navbar {
+     height: 7.5vh !important;
+   }
 }
 
 .navbar{
