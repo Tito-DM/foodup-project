@@ -1,7 +1,7 @@
 <div class = 'container '>
   <% @recipe.each do |recipe | -%>
     <div class="card mb-3 ">
-       <%= link_to  view_user_recipe_path(recipe.user.id, recipe.id), method: :get do %>
+       <%= link_to  view_user_recipe_path(recipe.user.id, recipe.id), method: :get, :class=>'nopadding' do %>
         <div class="card-header bckg" style="background-image: url(<%= recipe.image.url %>)">
        </div>
        <%end%>
