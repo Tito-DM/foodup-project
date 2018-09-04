@@ -130,12 +130,14 @@ footer{
 
 @media (min-width: 768px){
   .container{
-        margin-top: 12rem;
+        margin-top: 13rem;
   max-width: 940px !important;
   }
   .navbar {
-    height: 12vh !important;
+    height: 14vh !important;
   }
+
+
 
   .navbar-brand{
     font-size: 2.22rem;
@@ -145,7 +147,18 @@ footer{
   }
 }
 
+
+
+@media (width: 1024px) {
+    #search_name {
+      margin-left: 2rem;
+    }
+}
+
+
 @media (min-width: 1200px) {
+
+
   .container {
      margin-top: 4rem;
   max-width: 1220px !important;
