@@ -1,8 +1,10 @@
 <div class = 'container '>
   <% @recipe.each do |recipe | -%>
     <div class="card mb-3 ">
-       <div class="card-header bckg" style="background-image: url(<%= recipe.image.url %>)">
+       <%= link_to  view_user_recipe_path(recipe.user.id, recipe.id), method: :get do %>
+        <div class="card-header bckg" style="background-image: url(<%= recipe.image.url %>)">
        </div>
+       <%end%>
        <div class="card-body">
         <div class="card-header bg-info">
         <small class=" text-light">Name: <%=recipe.name%></small><br/>
