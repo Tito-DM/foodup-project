@@ -150,9 +150,17 @@ footer{
 
 
 @media (width: 1024px) {
+    .container {
+      margin-top: 7.5rem;
+      max-width: 940px !important;
+    }
     #search_name {
       margin-left: 2rem;
     }
+     .navbar {
+       height: 8vh !important;
+     }
+
 }
 
 
