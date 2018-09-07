@@ -2,6 +2,7 @@ class RecipesController < ApplicationController
   before_action :set_user,only: [:new,:edit,:update,:show,:destroy,:create]
   before_action :require_user, except: [:index,:view]
   before_action :require_same_user, only: [:edit,:update,:show,:destroy]
+
   def index
     @recipe = Recipe.all.order(created_at: :desc)
     return @recipe = Recipe.where("name LIKE ? ", "%#{params[:search_field].downcase}%").all if params[:search] == 'name'
@@ -50,6 +51,22 @@ class RecipesController < ApplicationController
 
   def view
     @recipe = Recipe.find(params[:id])
+  end
+
+  def dislike
+     @user = User.find(params[:user_id])
+     @recipe = Recipe.find(params[:id])
+     @check = Recipe.check_dislike(@recipe,@user)
+     redirect_to root_path, danger: "u can only dislike or love it once"  and return if @check
+    redirect_to user_recipe_dislikes_path(@user,@recipe) and return
+  end
+
+   def favorite
+     @user = User.find(params[:user_id])
+     @recipe = Recipe.find(params[:id])
+     @check = Recipe.check_favorite(@recipe,@user)
+     redirect_to root_path , danger: "u can only dislike or love it once"  and return if @check
+     redirect_to user_recipe_favorites_path(@user,@recipe) and return
   end
 
 

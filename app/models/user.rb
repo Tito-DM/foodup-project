@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_many :recipes, :dependent => :destroy
+  has_one :dislike,:dependent => :destroy
+  has_one :favorite,:dependent => :destroy
   before_save { self.email = email.downcase}
   before_save { self.name = name.downcase}
   validates :name, presence:true, length: {minimum:3, maximum:50}

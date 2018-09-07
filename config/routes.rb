@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :users do
     resources :recipes,except: :index  do
       get :view, on: :member
+      get :dislike, on: :member
+      get :favorite, on: :member
       resources :ingredients
       resources :steps
       resources :comments

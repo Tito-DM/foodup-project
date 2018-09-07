@@ -11,4 +11,18 @@ class Recipe < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   validates :name, presence:true
   validates :origin, presence:true
+
+  def self.check_dislike recipe, user
+    @recipe = Recipe.find(recipe.id)
+    @recipe.favorite.each {|f| return true if f.user_id == user.id}
+    @recipe.dislike.each {|d| return true if d.user_id == user.id}
+    false
+  end
+
+  def self.check_favorite recipe, user
+    @recipe = Recipe.find(recipe.id)
+    @recipe.dislike.each {|d| return true if d.user_id == user.id}
+    @recipe.favorite.each {|f| return true if f.user_id == user.id}
+    false
+  end
 end
