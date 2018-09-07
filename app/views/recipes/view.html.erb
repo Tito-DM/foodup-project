@@ -26,9 +26,9 @@
             <div class="col-sm">
               <span class='love-dislike'>
                 <span class="dot"><%=@recipe.dislike.count%></span>
-                <%= link_to '<i class="material-icons text-warning">thumb_down</i>'.html_safe, user_recipe_dislikes_path(@recipe.user.id, @recipe.id,1),method: :post ,:class=> "dislike"%>
+                <%= link_to '<i class="material-icons text-warning">thumb_down</i>'.html_safe, user_recipe_dislikes_path(@recipe.user.id, @recipe.id,1),:class=> "dislike"%>
                 <span class="dot"><%=@recipe.favorite.count%></span>
-                <%= link_to '<i class="material-icons text-danger">favorite</i>'.html_safe,user_recipe_favorites_path(@recipe.user.id, @recipe.id,1),method: :post  %>
+                <%= link_to '<i class="material-icons text-danger">favorite</i>'.html_safe,user_recipe_favorites_path(@recipe.user.id, @recipe.id,1)%>
 
               </span>
             </div>

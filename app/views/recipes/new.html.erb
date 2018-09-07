@@ -1,4 +1,4 @@
-<h1 class = 'center'> Create new Recip </h1>
+
 
 <% if @recipe.errors.any?%>
   <ul>
@@ -9,7 +9,7 @@
 <%end%>
 
 <div class= 'container'>
-
+<h1 class = 'text-center'> Create new Recipe </h1>
 <%= form_for @recipe, url: user_recipes_path(@user.id),html: { multipart: true } do |f|%>
   <div class="form-group">
     <%= f.label :name%>

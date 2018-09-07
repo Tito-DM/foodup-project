@@ -18,7 +18,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = @user.recipes.create(recip_params)
     if @recipe.save
-      flash[:notice] = 'Recipe was successfully created'
+      flash[:success] = 'Recipe was successfully created'
       redirect_to user_recipe_path(@user.id, @recipe)
     else
       render 'new'
@@ -57,16 +57,24 @@ class RecipesController < ApplicationController
      @user = User.find(params[:user_id])
      @recipe = Recipe.find(params[:id])
      @check = Recipe.check_dislike(@recipe,@user)
-     redirect_to root_path, danger: "u can only dislike or love it once"  and return if @check
-    redirect_to user_recipe_dislikes_path(@user,@recipe) and return
+     if @check
+      flash[:danger] = "u can only dislike or love it once"
+      redirect_to root_path
+     else
+      redirect_to user_recipe_dislikes_path(@user,@recipe)
+     end
   end
 
    def favorite
      @user = User.find(params[:user_id])
      @recipe = Recipe.find(params[:id])
      @check = Recipe.check_favorite(@recipe,@user)
-     redirect_to root_path , danger: "u can only dislike or love it once"  and return if @check
-     redirect_to user_recipe_favorites_path(@user,@recipe) and return
+     if @check
+      flash[:danger] = "u can only dislike or love it once"
+      redirect_to root_path
+     else
+     redirect_to user_recipe_favorites_path(@user,@recipe)
+     end
   end
 
 

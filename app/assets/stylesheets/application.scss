@@ -95,10 +95,6 @@
   text-align: center;
 }
 
-.container{
-  margin-top:4.8rem;
-  width: 100vw !important;
-}
 
 a {
   padding-right: 5rem;
@@ -129,8 +125,16 @@ footer{
 
 
 @media (min-width: 768px){
+.row-padding {
+  padding-top: 8rem !important;
+}
+
+.full-width {
+  width: 100%;
+}
+
   .container{
-        margin-top: 13rem;
+        margin-top: 16rem;
   max-width: 940px !important;
   }
   .navbar {
@@ -151,7 +155,7 @@ footer{
 
 @media (width: 1024px) {
     .container {
-      margin-top: 7.5rem;
+      margin-top: 7rem;
       max-width: 940px !important;
     }
     #search_name {
@@ -165,10 +169,18 @@ footer{
 
 
 @media (min-width: 1200px) {
+  .row-padding {
+    padding-top: 0.8rem !important;
+    margin-bottom: 0 !important;
+  }
+
+  .full-width {
+    width: 100%;
+  }
 
 
   .container {
-     margin-top: 4rem;
+     margin-top: 6rem;
   max-width: 1220px !important;
   }
    .navbar-brand {
@@ -200,5 +212,20 @@ footer{
 .nopadding{
   padding: 0 !important;
 }
+
+.errors{
+  margin-top: 5rem !important;
+}
+
+.container-flash{
+     margin: 0 auto;
+     position: absolute;
+     z-index: 1;
+     top:7%;
+     left: 20%;
+     width: 60%;
+}
+
+
 
 

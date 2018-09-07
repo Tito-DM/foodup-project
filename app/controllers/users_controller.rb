@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id #allow to login when registered
-      flash[:notice] = 'Profile was successfully created'
+      flash[:success] = 'Profile was successfully created'
       redirect_to user_path(@user)
     else
       render 'new'

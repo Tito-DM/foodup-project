@@ -6,10 +6,10 @@ class StepsController < ApplicationController
     @step =  @recipe.steps.new(step: params[:step])
 
     if @step.save
-      flash[:notice] = 'Step was successfully add'
+      flash[:success] = 'Step was successfully add'
       redirect_to user_recipe_path(params[:user_id],params[:recipe_id]) and return
     else
-      flash[:notice] = errors_message.to_s.gsub!(/[\[\"\]]/, "")
+      flash[:success] = errors_message.to_s.gsub!(/[\[\"\]]/, "")
       redirect_to user_recipe_path(params[:user_id],params[:recipe_id]) and return
     end
   end
@@ -25,7 +25,7 @@ class StepsController < ApplicationController
     @recipe = @user.recipes.find(params[:recipe_id])
     @step  = @recipe.steps.find(params[:id])
     if @step.update(step_params)
-    flash[:notice] = 'step was successfully edited'
+    flash[:success] = 'step was successfully edited'
     redirect_to user_recipe_path(@user.id, @recipe.id)
     end
 
@@ -37,7 +37,7 @@ class StepsController < ApplicationController
     @recipe =  @user.recipes.find(params[:recipe_id])
     @step = @recipe.steps.find(params[:id])
     if @step.destroy
-    flash[:notice] = 'step was successfully deleted'
+    flash[:success] = 'step was successfully deleted'
     redirect_to user_recipe_path(@user.id, @recipe.id)
     end
   end
