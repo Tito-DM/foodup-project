@@ -15,9 +15,9 @@
   <div class="card-footer text-muted shadow-lg p-3 mb-5 footer-view_color rounded">
       <div class="row">
          <div class="col-sm ">
-           <span class="dot">0</span>
+           <span class="dot"><%=@recipe.dislike.count%></span>
            <i class="material-icons text-info">thumb_down</i>
-           <span class="dot">0</span>
+          <span class="dot"><%=@recipe.favorite.count%></span>
            <i class="material-icons text-danger">favorite</i>
          </div>
 

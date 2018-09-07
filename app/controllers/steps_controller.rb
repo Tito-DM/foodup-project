@@ -6,7 +6,6 @@ class StepsController < ApplicationController
     @step =  @recipe.steps.new(step: params[:step])
 
     if @step.save
-      flash[:success] = 'Step was successfully add'
       redirect_to user_recipe_path(params[:user_id],params[:recipe_id]) and return
     else
       flash[:success] = errors_message.to_s.gsub!(/[\[\"\]]/, "")

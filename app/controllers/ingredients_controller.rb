@@ -6,7 +6,6 @@ class IngredientsController < ApplicationController
     @recipe =  Recipe.find(params[:recipe_id])
     @ingredient = @recipe.ingredient.create(ingredient: params[:ingredient], qty: params[:qty])
     if @ingredient.save
-      flash[:success] = 'Ingredient was successfully add'
       redirect_to user_recipe_path(params[:user_id],params[:recipe_id]) and return
     else
       flash[:success] = errors_message.to_s.gsub!(/[\[\"\]]/, "")
@@ -26,7 +25,7 @@ class IngredientsController < ApplicationController
     @recipe =  @user.recipes.find(params[:recipe_id])
     @ingredient = @recipe.ingredient.find(params[:id])
     if @ingredient.update(ingredient_params)
-    flash[:success] = 'Ingredient was successfully edited'
+    flash.now[:success] = 'Ingredient was successfully edited'
     redirect_to user_recipe_path(@user.id, @recipe.id)
     end
 

@@ -56,7 +56,7 @@
     </tr>
     <% @recipe.ingredient.each do |ingredients| -%>
       <tr>
-        <th id="counter" class="dot-big"><%=counter%></th>
+        <th id="counter" class="dot-big">1</th>
         <td><%= ingredients.ingredient%></td>
         <td><%= ingredients.qty%></td>
         <td><%= ingredients.created_at%></td>
@@ -72,7 +72,7 @@
   <table class="table">
     <%@recipe.steps.each do |step| -%>
      <tr>
-        <th id="counter" class="dot-big"><%=counter%></th>
+        <th id="counter" class="dot-big">1</th>
         <td><%= step.step%></td>
       </tr>
     <%end-%>
