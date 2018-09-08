@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :recipes, :dependent => :destroy
+  has_many :comment, :dependent => :destroy
   has_one :dislike,:dependent => :destroy
   has_one :favorite,:dependent => :destroy
   before_save { self.email = email.downcase}

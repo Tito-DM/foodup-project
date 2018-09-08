@@ -5,7 +5,7 @@
         <div class="card-header bckg" style="background-image: url(<%= recipe.image.url %>)">
        </div>
        <%end%>
-       <div class="card-body">
+      <div class="card-body">
         <div class="card-header bg-info">
         <small class=" text-light">Name: <%=recipe.name%></small><br/>
          <small class=" text-light">Origin: <%=recipe.origin%></small><br/>
@@ -22,7 +22,7 @@
             <div class="col-sm">
               <span class="comment-view">
                 <%= link_to 'view', view_user_recipe_path(recipe.user.id, recipe.id), method: :get, :class=>'card-view-comment text-warning'%>
-                <a href='#' class="card-view-comment text-warning" data-toggle="modal" data-target="#comment_model" data-whatever="@mdo">comment</a>
+                <a href='#' class="card-view-comment text-warning" data-toggle="modal" data-target="#Modal<%=recipe.id%>">comment</a>
                 <span class="dot"><%=recipe.comment.count%></span>
               </span>
             </div>
@@ -55,25 +55,35 @@
           </div>
        </div>
     </div>
-    <div class="modal fade" id="comment_model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Comments</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+  <%end%>
+</div>
+  <%= render 'layouts/footer' %>
 
-          <div class="modal-body">
 
-            <% recipe.comment.each do |c|%>
-            <%= c.comment%><br/>
-            <%end%>
-          </div>
-
-          <div class="modal-footer">
-            <%= form_tag(user_recipe_comments_path(recipe.user.id, recipe.id),method: :post) do |f|%>
+ <% @recipe.each do |recipe | -%>
+<div class="modal fade" id="Modal<%=recipe.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel">Comments</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%recipe.comment.each do |c|%>
+         <%if current_user%>
+          <li><span class="badge badge-pill badge-primary"><%=Comment.last.user.name%></span> <%=c.comment%></li>
+          <%else%>
+            <ul>
+            <li><span class="badge badge-pill badge-primary">anonymous-comment</span> <%=c.comment%></li>
+          </ul>
+        <%end%>
+        <%end%>
+      </div>
+      <div class="modal-footer">
+       <%if current_user%>
+        <%= form_tag(user_recipe_comments_path(current_user, recipe.id),method: :post) do |f|%>
               <div class="row">
                 <div class="col">
                   <%= text_field_tag :comment,"" ,class:'form-control',placeholder:"Enter comment" %>
@@ -83,17 +93,23 @@
                 </div>
              </div>
           <%end%>
-        </div>
-
-        </div>
+          <%else%>
+           <%= form_tag(user_recipe_comments_path(recipe.user.id, recipe.id),method: :post) do |f|%>
+              <div class="row">
+                <div class="col">
+                  <%= text_field_tag :comment,"" ,class:'form-control',placeholder:"Enter comment" %>
+                </div>
+                <div class="col">
+                  <%= submit_tag "add comment",class:'btn btn-success'%>
+                </div>
+             </div>
+          <%end%>
+        <%end%>
       </div>
     </div>
-  <%end%>
+  </div>
 </div>
-  <%= render 'layouts/footer' %>
-
-
-
+<%end%>
 
 
 
@@ -105,8 +121,6 @@
 
 
 <!-- model trigger-->
-
-
 
 
 
