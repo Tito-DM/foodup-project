@@ -17,7 +17,10 @@
 
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          <%= user_name%>
+          <button type="button " class="btn btn-primary btn-notification"><span class="badge badge-light badge-notification">4</span>
+        </button>
         </a>
+
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
          <%= link_to 'View Profile', user_path(current_user),:class=>"dropdown-item"  %>
          <%= link_to 'Edit Profile', edit_user_path(current_user),:class=>"dropdown-item"  %>

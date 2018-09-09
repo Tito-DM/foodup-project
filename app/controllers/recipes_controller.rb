@@ -51,6 +51,7 @@ class RecipesController < ApplicationController
 
   def view
     @recipe = Recipe.find(params[:id])
+    @recipe_all =Recipe.all;
   end
 
   def dislike
@@ -80,7 +81,7 @@ class RecipesController < ApplicationController
 
    private
   def recip_params
-    params.require(:recipe).permit(:name, :origin, :description, :image)
+    params.require(:recipe).permit(:name, :origin, :description, :image, :video)
   end
 
   def require_same_user

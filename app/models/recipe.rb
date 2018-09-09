@@ -7,8 +7,11 @@ class Recipe < ApplicationRecord
   has_many  :favorite, :dependent => :destroy
   before_save { self.name = name.downcase}
   before_save { self.origin = origin.downcase}
-  has_attached_file :image, style: { medium: "300x300>", thumb: "150x150#"}
+  has_attached_file :image, style: { medium: "300x300>", thumb: "150x150#"}, :dependent => :destroy
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+  has_attached_file :video, :styles => {:medium => { :geometry => "300x300", :format => 'flv'},:thumb => {:geometry => "100x100#", :format => 'jpg', :time => 15}
+    }, :processors => [:ffmpeg], :dependent => :destroy
+  validates_attachment_content_type :video, content_type: %w(video/mp4 video/3gp video/webm image/jpeg image/jpg image/png)
   validates :name, presence:true
   validates :origin, presence:true
 

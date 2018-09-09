@@ -55,6 +55,8 @@
           </div>
        </div>
     </div>
+
+
   <%end%>
 </div>
   <%= render 'layouts/footer' %>
@@ -71,19 +73,15 @@
         </button>
       </div>
       <div class="modal-body">
+       <ul class="list-group list-group-flush">
         <%recipe.comment.each do |c|%>
-         <%if current_user%>
-          <li><span class="badge badge-pill badge-primary"><%=Comment.last.user.name%></span> <%=c.comment%></li>
-          <%else%>
-            <ul>
-            <li><span class="badge badge-pill badge-primary">anonymous-comment</span> <%=c.comment%></li>
-          </ul>
+            <li class="list-group-item"><%= image_tag 'avatar.png', class:"avatar", alt:"Avatar"%><span class="badge badge-pill badge-primary"><%=Comment.find(c.id).user.name%></span>:  <%=c.comment%></li>
         <%end%>
-        <%end%>
+         </ul>
       </div>
       <div class="modal-footer">
        <%if current_user%>
-        <%= form_tag(user_recipe_comments_path(current_user, recipe.id),method: :post) do |f|%>
+        <%= form_tag(user_recipe_comments_path(recipe.user.id, recipe.id, current_user),method: :post) do |f|%>
               <div class="row">
                 <div class="col">
                   <%= text_field_tag :comment,"" ,class:'form-control',placeholder:"Enter comment" %>
@@ -110,6 +108,7 @@
   </div>
 </div>
 <%end%>
+
 
 
 

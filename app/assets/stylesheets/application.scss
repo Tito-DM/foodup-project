@@ -78,7 +78,7 @@
 .comment-view{
   text-transform: uppercase;
   display: inline;
-   margin-top: 3px;
+  margin-top: 3px;
 
 }
 .card-view-comment{
@@ -128,13 +128,20 @@ footer{
 .row-padding {
   padding-top: 8rem !important;
 }
+.video_mobile{
+  width: 95vw;
+  padding-bottom: 8rem;
+}
 
 .full-width {
   width: 100%;
 }
+  .container-view {
+    max-width: 940px !important;
+  }
 
   .container{
-        margin-top: 16rem;
+  margin-top: 16rem;
   max-width: 940px !important;
   }
   .navbar {
@@ -165,10 +172,19 @@ footer{
        height: 15vh !important;
      }
 
+     .video_mobile {
+       width: 90vw;
+       padding-bottom: 8rem;
+     }
+
 }
 
 
 @media (min-width: 1200px) {
+  .video_mobile {
+    width: 80vw;
+    padding-bottom: 8rem;
+  }
   .row-padding {
     padding-top: 0.8rem !important;
     margin-bottom: 0 !important;
@@ -177,11 +193,15 @@ footer{
   .full-width {
     width: 100%;
   }
+   .container-view {
+      margin: 0 auto;
+      max-width: 1220px !important;
+   }
 
 
   .container {
      margin-top: 6rem;
-  max-width: 1220px !important;
+     max-width: 1220px !important;
   }
    .navbar-brand {
      font-size: 1.25rem;
@@ -226,6 +246,22 @@ footer{
      width: 60%;
 }
 
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.btn-notification{
+  padding: 0 5px !important;
+  border-radius: 5rem !important;
+}
+
+.badge-notification{
+  border-radius: 5rem !important;
+
+}
 
 
 
