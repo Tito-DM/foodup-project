@@ -7,7 +7,8 @@ class RecipesController < ApplicationController
     @recipe = Recipe.all.order(created_at: :desc)
     return @recipe = Recipe.where("name LIKE ? ", "%#{params[:search_field].downcase}%").all if params[:search] == 'name'
     return @recipe = Recipe.where("origin LIKE ? ", "%#{params[:search_field].downcase}%").all if params[:search] == 'origin'
-    return @recipe = Recipe.joins(:user).where(:users => {:name => "%#{params[:search_field].downcase}%"})  if params[:search] =='create_by'
+    return @recipe = Recipe.joins(:user).where(:users => {:name => "#{params[:search_field].downcase}"})  if params[:search] =='create_by'
+
   end
 
 
